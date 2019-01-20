@@ -37,12 +37,92 @@
       width="90%">
       <span slot="title">
         <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
-        企业资质
+        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">企业资质</h3>
       </span>
       <span slot="footer">
-        <el-button type="primary">下一步</el-button>
+        <el-button type="primary" @click="showDialog2">下一步</el-button>
       </span>
     </el-dialog>
+
+    <!--弹窗2-->
+    <el-dialog
+      title=""
+      :visible.sync="visibleDialog2"
+      :center="true"
+      width="90%">
+      <span slot="title">
+        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
+        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">所属领域</h3>
+      </span>
+      <span slot="footer">
+        <el-button type="primary" @click="showDialog1">上一步</el-button>
+        <el-button type="primary" @click="showDialog3">下一步</el-button>
+      </span>
+    </el-dialog>
+
+    <!--弹窗3-->
+    <el-dialog
+      title=""
+      :visible.sync="visibleDialog3"
+      :center="true"
+      width="90%">
+      <span slot="title">
+        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
+        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">成立年限</h3>
+      </span>
+      <span slot="footer">
+        <el-button type="primary" @click="showDialog2">上一步</el-button>
+        <el-button type="primary" @click="showDialog4">下一步</el-button>
+      </span>
+    </el-dialog>
+
+    <!--弹窗4-->
+    <el-dialog
+      title=""
+      :visible.sync="visibleDialog4"
+      :center="true"
+      width="90%">
+      <span slot="title">
+        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
+        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">注册地址</h3>
+      </span>
+      <span slot="footer">
+        <el-button type="primary" @click="showDialog3">上一步</el-button>
+        <el-button type="primary" @click="showDialog5">下一步</el-button>
+      </span>
+    </el-dialog>
+
+    <!--弹窗5-->
+    <el-dialog
+      title=""
+      :visible.sync="visibleDialog5"
+      :center="true"
+      width="90%">
+      <span slot="title">
+        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
+        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">自主知识产权</h3>
+      </span>
+      <span slot="footer">
+        <el-button type="primary" @click="showDialog4">上一步</el-button>
+        <el-button type="primary" @click="showDialog6">下一步</el-button>
+      </span>
+    </el-dialog>
+
+    <!--弹窗6-->
+    <el-dialog
+      title=""
+      :visible.sync="visibleDialog6"
+      :center="true"
+      width="90%">
+      <span slot="title">
+        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
+        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">企业资质</h3>
+      </span>
+      <span slot="footer">
+        <el-button type="primary">完成</el-button>
+      </span>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -50,19 +130,72 @@
 export default {
   data () {
     return {
-      visibleDialog1: false
+      visibleDialog1: false,
+      visibleDialog2: false,
+      visibleDialog3: false,
+      visibleDialog4: false,
+      visibleDialog5: false,
+      visibleDialog6: false
     }
   },
   methods: {
     showDialog1 () {
       this.visibleDialog1 = true
+      this.visibleDialog2 = false
+      this.visibleDialog3 = false
+      this.visibleDialog4 = false
+      this.visibleDialog5 = false
+      this.visibleDialog6 = false
+    },
+    showDialog2 () {
+      this.visibleDialog1 = false
+      this.visibleDialog2 = true
+      this.visibleDialog3 = false
+      this.visibleDialog4 = false
+      this.visibleDialog5 = false
+      this.visibleDialog6 = false
+    },
+    showDialog3 () {
+      this.visibleDialog1 = false
+      this.visibleDialog2 = false
+      this.visibleDialog3 = true
+      this.visibleDialog4 = false
+      this.visibleDialog5 = false
+      this.visibleDialog6 = false
+    },
+    showDialog4 () {
+      this.visibleDialog1 = false
+      this.visibleDialog2 = false
+      this.visibleDialog3 = false
+      this.visibleDialog4 = true
+      this.visibleDialog5 = false
+      this.visibleDialog6 = false
+    },
+    showDialog5 () {
+      this.visibleDialog1 = false
+      this.visibleDialog2 = false
+      this.visibleDialog3 = false
+      this.visibleDialog4 = false
+      this.visibleDialog5 = true
+      this.visibleDialog6 = false
+    },
+    showDialog6 () {
+      this.visibleDialog1 = false
+      this.visibleDialog2 = false
+      this.visibleDialog3 = false
+      this.visibleDialog4 = false
+      this.visibleDialog5 = false
+      this.visibleDialog6 = true
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .fullWidth {
   width: 100%;
+}
+.el-dialog__headerbtn .el-dialog__close {
+  color: #fff;
 }
 </style>
