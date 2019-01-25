@@ -5,7 +5,18 @@ import App from './App'
 import router from './router'
 import '@/element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import VueCookie from 'vue-cookie'
+import VueResource from 'vue-resource'
 
+const URL = 'http://39.105.41.93:8282/renren-fast/'
+const wsURL = 'ws://39.105.41.93:8282/renren-fast/'
+Vue.prototype.URL = URL
+Vue.prototype.wsURL = wsURL
+Vue.use(VueCookie)
+Vue.use(VueResource)
+Vue.http.options.headers = {
+  'Content-Type': 'application/text; charset=UTF-8'
+}
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

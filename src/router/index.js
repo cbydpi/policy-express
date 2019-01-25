@@ -34,13 +34,13 @@ router.beforeEach((to, from, next) => {
     language: (navigator.browserLanguage || navigator.language).toLowerCase()
   }
   /* eslint-enable */
-  console.log(to)
   if (browser.versions.mobile) { // 判断是否是移动设备打开。browser代码在下面
     var ua = navigator.userAgent.toLowerCase() // 获取判断用的对象
     if (ua.indexOf('micromessenger') === -1 && to.path !== '/error') {
       // 在微信中打开
       next('/error')
     } else {
+      // window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx606d5147a434e84b&redirect_uri=' + encodeURIComponent('http://192.168.31.141:8080') + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
       next()
     }
   } else {

@@ -255,7 +255,7 @@ export default {
       this.visibleDialog6 = false
     },
     linkDefault () {
-      this.$router.replace({ name: 'default' })
+      this.$router.push({ name: 'default' })
     }
   }
 }
