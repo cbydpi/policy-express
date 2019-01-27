@@ -1,6 +1,6 @@
 <template>
-  <div>
-    default
+  <div style="width: 100%;height: 100%;">
+    <p>user</p>
   </div>
 </template>
 
@@ -11,10 +11,11 @@ export default {
 
     }
   },
-  methods: {
-    getUserInfo () {
+  mounted () {
 
-    }
+  },
+  methods: {
+
   }
 }
 </script>

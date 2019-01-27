@@ -7,9 +7,20 @@ Vue.use(Router)
 const router = new Router({
   routes: [
     { path: '/error', component: _import('error'), name: 'error', desc: '报错页' },
-    { path: '/default', component: _import('default'), name: 'default', desc: '列表', meta: {auth: true} },
     { path: '/', component: _import('home'), name: 'homePage', desc: '首页', meta: {auth: true} },
-    { path: '/home', component: _import('home'), name: 'home', desc: '首页', meta: {auth: true} }
+    { path: '/home', component: _import('home'), name: 'home', desc: '首页', meta: {auth: true} },
+    {
+      path: '/',
+      component: _import('layout/index'),
+      name: 'layout',
+      redirect: {name: 'policy'},
+      desc: '上左右整体布局',
+      children: [
+        { path: '/policy', component: _import('policy'), name: 'policy', desc: '列表', meta: {auth: true} },
+        { path: '/qa', component: _import('qa'), name: 'qa', desc: '咨询', meta: {auth: true} },
+        { path: '/info', component: _import('info'), name: 'info', desc: '我的', meta: {auth: true} }
+      ]
+    }
   ]
 })
 
@@ -38,7 +49,7 @@ router.beforeEach((to, from, next) => {
     var ua = navigator.userAgent.toLowerCase() // 获取判断用的对象
     if (ua.indexOf('micromessenger') === -1 && to.path !== '/error') {
       // 在微信中打开
-      next('/error')
+      next()
     } else {
       // window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx606d5147a434e84b&redirect_uri=' + encodeURIComponent('http://192.168.31.141:8080') + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
       next()

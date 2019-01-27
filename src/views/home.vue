@@ -32,134 +32,170 @@
     <!--弹窗1-->
     <el-dialog
       title=""
-      :visible.sync="visibleDialog1"
-      :modal="false"
+      :visible.sync="visibleDialog"
+      :modal="true"
+      :close-on-click-modal="false"
       :center="true"
       width="90%">
-      <span slot="title" class="clearfix">
-        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
-        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">企业资质</h3>
+      <span slot="title" class="clearfix" v-if="visibleDialog1">
+        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
+        <h3 class="dialogHeader_h">企业资质</h3>
       </span>
-      <div style="margin-top: 70px;text-align: center;">
-        <el-radio v-model="homeTest.dialog1" label="1" border style="width: 80%;text-align: left;">国家高新技术企业</el-radio>
-        <el-radio v-model="homeTest.dialog1" label="2" border style="width: 80%;text-align: left;margin: 0;margin-top: 20px;">国家高新技术企业</el-radio>
+      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog1">
+        <el-radio v-model="homeTest.dialog1" label="1" border class="dialogBody_radio1">国家高新技术企业</el-radio>
+        <el-radio v-model="homeTest.dialog1" label="2" border  class="dialogBody_radio2">国家高新技术企业</el-radio>
+        <el-radio v-model="homeTest.dialog1" label="3" border  class="dialogBody_radio2">无</el-radio>
       </div>
-      <span slot="footer">
+      <span slot="footer" v-if="visibleDialog1">
         <el-button type="primary" @click="showDialog2">下一步</el-button>
-        <span style="position: absolute;bottom: 15px;left: 15px;color: #ccc;">1/5</span>
+        <span class="dialogFooter_mark">1/9</span>
       </span>
-    </el-dialog>
 
-    <!--弹窗2-->
-    <el-dialog
-      title=""
-      :visible.sync="visibleDialog2"
-      :modal="false"
-      :center="true"
-      width="90%">
-      <span slot="title">
-        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
-        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">所属领域</h3>
+      <!--弹窗2-->
+      <span slot="title" v-if="visibleDialog2">
+        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
+        <h3 class="dialogHeader_h">所属领域</h3>
       </span>
-      <div style="margin-top: 70px;text-align: center;">
-        <el-radio v-model="homeTest.dialog2" label="1" border style="width: 80%;text-align: left;">新一代信息技术</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="2" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">集成电路</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="3" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">医药健康</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="4" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">智能装备产业</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="5" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">节能环保</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="6" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">新能源智能汽车</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="7" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">新材料</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="8" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">人工智能</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="9" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">软件和信息服务</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="10" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">科技服务业</el-radio>
+      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog2">
+        <el-radio v-model="homeTest.dialog2" label="1" border class="dialogBody_radio1">新一代信息技术</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="2" border class="dialogBody_radio2">集成电路</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="3" border class="dialogBody_radio2">医药健康</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="4" border class="dialogBody_radio2">智能装备产业</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="5" border class="dialogBody_radio2">节能环保</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="6" border class="dialogBody_radio2">新能源智能汽车</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="7" border class="dialogBody_radio2">新材料</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="8" border class="dialogBody_radio2">人工智能</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="9" border class="dialogBody_radio2">软件和信息服务</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="10" border class="dialogBody_radio2">科技服务业</el-radio>
       </div>
-      <span slot="footer">
-        <span style="position: absolute;bottom: 15px;left: 15px;color: #ccc;">2/5</span>
+      <span slot="footer" v-if="visibleDialog2">
+        <span class="dialogFooter_mark">2/9</span>
         <el-button type="primary" @click="showDialog1">上一步</el-button>
         <el-button type="primary" @click="showDialog3">下一步</el-button>
       </span>
-    </el-dialog>
 
-    <!--弹窗3-->
-    <el-dialog
-      title=""
-      :visible.sync="visibleDialog3"
-      :modal="false"
-      :center="true"
-      width="90%">
-      <span slot="title">
-        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
-        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">成立年限</h3>
+      <!--弹窗3-->
+      <span slot="title" v-if="visibleDialog3">
+        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
+        <h3 class="dialogHeader_h">成立年限</h3>
       </span>
-      <div style="margin-top: 70px;text-align: center;">
-        <el-radio v-model="homeTest.dialog3" label="1" border style="width: 80%;text-align: left;">1年以内</el-radio>
-        <el-radio v-model="homeTest.dialog3" label="2" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">1-3年</el-radio>
-        <el-radio v-model="homeTest.dialog3" label="3" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">4-6年</el-radio>
-        <el-radio v-model="homeTest.dialog3" label="4" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">7年以上</el-radio>
+      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog3">
+        <el-radio v-model="homeTest.dialog3" label="1" border class="dialogBody_radio1">1年以内</el-radio>
+        <el-radio v-model="homeTest.dialog3" label="2" border class="dialogBody_radio2">1-3年</el-radio>
+        <el-radio v-model="homeTest.dialog3" label="3" border class="dialogBody_radio2">4-6年</el-radio>
+        <el-radio v-model="homeTest.dialog3" label="4" border class="dialogBody_radio2">7年以上</el-radio>
       </div>
-      <span slot="footer">
-        <span style="position: absolute;bottom: 15px;left: 15px;color: #ccc;">3/5</span>
+      <span slot="footer" v-if="visibleDialog3">
+        <span class="dialogFooter_mark">3/9</span>
         <el-button type="primary" @click="showDialog2">上一步</el-button>
         <el-button type="primary" @click="showDialog4">下一步</el-button>
       </span>
-    </el-dialog>
 
-    <!--弹窗4-->
-    <el-dialog
-      title=""
-      :visible.sync="visibleDialog4"
-      :modal="false"
-      :center="true"
-      width="90%">
-      <span slot="title">
-        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
-        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">注册地址</h3>
+      <!--弹窗4-->
+      <span slot="title" v-if="visibleDialog4">
+        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
+        <h3 class="dialogHeader_h">注册地址</h3>
       </span>
-      <div style="margin-top: 70px;text-align: center;">
-        <el-radio v-model="homeTest.dialog4" label="1" border style="width: 80%;text-align: left;">海淀区</el-radio>
-        <el-radio v-model="homeTest.dialog4" label="2" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">中关村示范区内</el-radio>
+      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog4">
+        <el-radio v-model="homeTest.dialog4" label="1" border class="dialogBody_radio1">海淀区</el-radio>
+        <el-radio v-model="homeTest.dialog4" label="2" border class="dialogBody_radio2">中关村示范区内</el-radio>
       </div>
-      <span slot="footer">
-        <span style="position: absolute;bottom: 15px;left: 15px;color: #ccc;">4/5</span>
+      <span slot="footer" v-if="visibleDialog4">
+        <span class="dialogFooter_mark">4/9</span>
         <el-button type="primary" @click="showDialog3">上一步</el-button>
         <el-button type="primary" @click="showDialog5">下一步</el-button>
       </span>
-    </el-dialog>
 
-    <!--弹窗5-->
-    <el-dialog
-      title=""
-      :visible.sync="visibleDialog5"
-      :modal="false"
-      :center="true"
-      width="90%">
-      <span slot="title">
-        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
-        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">自主知识产权</h3>
+      <!--弹窗5-->
+      <span slot="title" v-if="visibleDialog5">
+        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
+        <h3 class="dialogHeader_h">创业人群</h3>
       </span>
-      <div style="margin-top: 70px;text-align: center;">
-        <el-radio v-model="homeTest.dialog5" label="1" border style="width: 80%;text-align: left;">有</el-radio>
-        <el-radio v-model="homeTest.dialog5" label="2" border style="width: 80%;margin: 0;margin-top: 15px;text-align: left;">无</el-radio>
+      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog5">
+        <el-radio v-model="homeTest.dialog5" label="1" border class="dialogBody_radio1">留学人员</el-radio>
+        <el-radio v-model="homeTest.dialog5" label="2" border class="dialogBody_radio2">非留学人员</el-radio>
       </div>
-      <span slot="footer">
-        <span style="position: absolute;bottom: 15px;left: 15px;color: #ccc;">5/5</span>
+      <span slot="footer" v-if="visibleDialog5">
+        <span class="dialogFooter_mark">5/9</span>
         <el-button type="primary" @click="showDialog4">上一步</el-button>
         <el-button type="primary" @click="showDialog6">下一步</el-button>
       </span>
-    </el-dialog>
 
-    <!--弹窗6-->
-    <el-dialog
-      title=""
-      :visible.sync="visibleDialog6"
-      :modal="false"
-      :center="true"
-      width="90%">
-      <span slot="title">
-        <img src="@/assets/images/dialog_titlebg.png" style="width: 100%;position: absolute;top: 0;left: 0;"/>
-        <h3 style="position: absolute;top: 0;left: 0;width: 100%;">企业资质</h3>
+      <!--弹窗6-->
+      <span slot="title" v-if="visibleDialog6">
+        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
+        <h3 class="dialogHeader_h">研发投入占比<br><p style="font-size: 1.2rem;color: #ccc;">(占全年总投入金额的比例)</p></h3>
       </span>
-      <span slot="footer">
+      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog6">
+        <el-radio v-model="homeTest.dialog6" label="1" border class="dialogBody_radio1">10%-20%</el-radio>
+        <el-radio v-model="homeTest.dialog6" label="2" border class="dialogBody_radio2">30%-40%</el-radio>
+        <el-radio v-model="homeTest.dialog6" label="3" border class="dialogBody_radio2">50%以上</el-radio>
+      </div>
+      <span slot="footer" v-if="visibleDialog6">
+        <span class="dialogFooter_mark">6/9</span>
+        <el-button type="primary" @click="showDialog5">上一步</el-button>
+        <el-button type="primary" @click="showDialog7">下一步</el-button>
+      </span>
+
+      <!--弹窗7-->
+      <span slot="title" v-if="visibleDialog7">
+        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
+        <h3 class="dialogHeader_h">企业营收<br><p style="font-size: 1.2rem;color: #ccc;">(上一年的企业营收总额)</p></h3>
+      </span>
+      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog7">
+        <el-radio v-model="homeTest.dialog7" label="1" border class="dialogBody_radio1">0-50万</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="2" border class="dialogBody_radio2">50-100万</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="3" border class="dialogBody_radio2">100-500万</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="4" border class="dialogBody_radio2">500-1000万</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="5" border class="dialogBody_radio2">1000-5000万</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="6" border class="dialogBody_radio2">5000万-1亿</el-radio>
+      </div>
+      <span slot="footer" v-if="visibleDialog7">
+        <span class="dialogFooter_mark">7/9</span>
+        <el-button type="primary" @click="showDialog6">上一步</el-button>
+        <el-button type="primary" @click="showDialog8">下一步</el-button>
+      </span>
+
+      <!--弹窗8-->
+      <span slot="title" v-if="visibleDialog8">
+        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
+        <h3 class="dialogHeader_h">融资额度</h3>
+      </span>
+      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog8">
+        <el-radio v-model="homeTest.dialog8" label="1" border class="dialogBody_radio1">0-50万</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="2" border class="dialogBody_radio2">50-100万</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="3" border class="dialogBody_radio2">100-500万</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="4" border class="dialogBody_radio2">500-1000万</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="5" border class="dialogBody_radio2">1000-5000万</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="6" border class="dialogBody_radio2">5000万-1亿</el-radio>
+      </div>
+      <span slot="footer" v-if="visibleDialog8">
+        <span class="dialogFooter_mark">8/9</span>
+        <el-button type="primary" @click="showDialog7">上一步</el-button>
+        <el-button type="primary" @click="showDialog9">下一步</el-button>
+      </span>
+
+      <!--弹窗9-->
+      <span slot="title" v-if="visibleDialog9">
+        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
+        <h3 class="dialogHeader_h">自主知识产权</h3>
+      </span>
+      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog9">
+        <el-radio v-model="homeTest.dialog9" label="1" border class="dialogBody_radio1">有</el-radio>
+        <el-radio v-model="homeTest.dialog9" label="2" border class="dialogBody_radio2">无</el-radio>
+      </div>
+      <span slot="footer" v-if="visibleDialog9">
+        <span class="dialogFooter_mark">9/9</span>
+        <el-button type="primary" @click="showDialog8">上一步</el-button>
+        <el-button type="primary" @click="showDialog10">下一步</el-button>
+      </span>
+
+      <!--弹窗10-->
+      <span slot="title" v-if="visibleDialog10">
+        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
+        <h3 class="dialogHeader_h">企业资质</h3>
+      </span>
+      <span slot="footer" v-if="visibleDialog10">
         <el-button type="primary" @click="finishTest">我知道了</el-button>
       </span>
     </el-dialog>
@@ -170,29 +206,46 @@
 export default {
   data () {
     return {
+      visibleDialog: false,
       visibleDialog1: false,
       visibleDialog2: false,
       visibleDialog3: false,
       visibleDialog4: false,
       visibleDialog5: false,
       visibleDialog6: false,
+      visibleDialog7: false,
+      visibleDialog8: false,
+      visibleDialog9: false,
+      visibleDialog10: false,
       homeTest: {
         dialog1: null,
         dialog2: null,
         dialog3: null,
         dialog4: null,
-        dialog5: null
+        dialog5: null,
+        dialog6: null,
+        dialog7: null,
+        dialog8: null,
+        dialog9: null
       }
     }
   },
+  mounted () {
+    this.showFooter = true
+  },
   methods: {
     showDialog1 () {
+      this.visibleDialog = true
       this.visibleDialog1 = true
       this.visibleDialog2 = false
       this.visibleDialog3 = false
       this.visibleDialog4 = false
       this.visibleDialog5 = false
       this.visibleDialog6 = false
+      this.visibleDialog7 = false
+      this.visibleDialog8 = false
+      this.visibleDialog9 = false
+      this.visibleDialog10 = false
     },
     showDialog2 () {
       if (!this.homeTest.dialog1) {
@@ -205,7 +258,10 @@ export default {
       this.visibleDialog4 = false
       this.visibleDialog5 = false
       this.visibleDialog6 = false
-      console.log(this.homeTest)
+      this.visibleDialog7 = false
+      this.visibleDialog8 = false
+      this.visibleDialog9 = false
+      this.visibleDialog10 = false
     },
     showDialog3 () {
       if (!this.homeTest.dialog2) {
@@ -218,6 +274,10 @@ export default {
       this.visibleDialog4 = false
       this.visibleDialog5 = false
       this.visibleDialog6 = false
+      this.visibleDialog7 = false
+      this.visibleDialog8 = false
+      this.visibleDialog9 = false
+      this.visibleDialog10 = false
     },
     showDialog4 () {
       if (!this.homeTest.dialog3) {
@@ -230,6 +290,10 @@ export default {
       this.visibleDialog4 = true
       this.visibleDialog5 = false
       this.visibleDialog6 = false
+      this.visibleDialog7 = false
+      this.visibleDialog8 = false
+      this.visibleDialog9 = false
+      this.visibleDialog10 = false
     },
     showDialog5 () {
       if (!this.homeTest.dialog4) {
@@ -242,31 +306,129 @@ export default {
       this.visibleDialog4 = false
       this.visibleDialog5 = true
       this.visibleDialog6 = false
+      this.visibleDialog7 = false
+      this.visibleDialog8 = false
+      this.visibleDialog9 = false
+      this.visibleDialog10 = false
     },
     showDialog6 () {
+      if (!this.homeTest.dialog5) {
+        this.$message.error('请选择')
+        return
+      }
       this.visibleDialog1 = false
       this.visibleDialog2 = false
       this.visibleDialog3 = false
       this.visibleDialog4 = false
       this.visibleDialog5 = false
       this.visibleDialog6 = true
+      this.visibleDialog7 = false
+      this.visibleDialog8 = false
+      this.visibleDialog9 = false
+      this.visibleDialog10 = false
+    },
+    showDialog7 () {
+      if (!this.homeTest.dialog6) {
+        this.$message.error('请选择')
+        return
+      }
+      this.visibleDialog1 = false
+      this.visibleDialog2 = false
+      this.visibleDialog3 = false
+      this.visibleDialog4 = false
+      this.visibleDialog5 = false
+      this.visibleDialog6 = false
+      this.visibleDialog7 = true
+      this.visibleDialog8 = false
+      this.visibleDialog9 = false
+      this.visibleDialog10 = false
+    },
+    showDialog8 () {
+      if (!this.homeTest.dialog7) {
+        this.$message.error('请选择')
+        return
+      }
+      this.visibleDialog1 = false
+      this.visibleDialog2 = false
+      this.visibleDialog3 = false
+      this.visibleDialog4 = false
+      this.visibleDialog5 = false
+      this.visibleDialog6 = false
+      this.visibleDialog7 = false
+      this.visibleDialog8 = true
+      this.visibleDialog9 = false
+      this.visibleDialog10 = false
+    },
+    showDialog9 () {
+      if (!this.homeTest.dialog8) {
+        this.$message.error('请选择')
+        return
+      }
+      this.visibleDialog1 = false
+      this.visibleDialog2 = false
+      this.visibleDialog3 = false
+      this.visibleDialog4 = false
+      this.visibleDialog5 = false
+      this.visibleDialog6 = false
+      this.visibleDialog7 = false
+      this.visibleDialog8 = false
+      this.visibleDialog9 = true
+      this.visibleDialog10 = false
+    },
+    showDialog10 () {
+      if (!this.homeTest.dialog9) {
+        this.$message.error('请选择')
+        return
+      }
+      this.visibleDialog1 = false
+      this.visibleDialog2 = false
+      this.visibleDialog3 = false
+      this.visibleDialog4 = false
+      this.visibleDialog5 = false
+      this.visibleDialog6 = false
+      this.visibleDialog7 = false
+      this.visibleDialog8 = false
+      this.visibleDialog9 = false
+      this.visibleDialog10 = true
+      console.log(this.homeTest)
     },
     finishTest () {
-      this.visibleDialog6 = false
+      this.visibleDialog = false
     },
     linkDefault () {
-      this.$router.push({ name: 'default' })
+      this.$router.push({ name: 'policy' })
     }
   }
 }
 </script>
 
-<style lang="scss">
-.fullWidth {
+<style lang="scss" scoped="scoped">
+.dialogHeader_image{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.dialogHeader_h{
+  color: #fff;
+  position: absolute;
+  top: 0;left: 0;
   width: 100%;
 }
-.el-dialog__headerbtn .el-dialog__close {
-  color: #fff;
+.dialogBody_radio1{
+  width: 80%;
+  text-align: left;
 }
-
+.dialogBody_radio2{
+  width: 80%;
+  text-align: left;
+  margin: 0!important;
+  margin-top: 1.5rem!important;
+}
+.dialogFooter_mark{
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  color: #ccc;
+}
 </style>

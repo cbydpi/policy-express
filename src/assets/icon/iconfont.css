@@ -1,0 +1,29 @@
+@font-face {font-family: "cbiconfont";
+  src: url('iconfont.eot?t=1548592520726'); /* IE9 */
+  src: url('iconfont.eot?t=1548592520726#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAARoAAsAAAAACLgAAAQZAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqEWIQPATYCJAMQCwoABCAFhQUHSRuaB8guIScbXkRVpNkwGSnFpUvg3ZYr4PMO+dja2xtYyGwR0ANJtE1tU0VIRgCBJlW+k///9P67+VIJT8ovYrcLbuAzmbdg8heu4BpyCaBk0S0P8Mfy/btFhc7WlGHVFG2jjYIirYGiwUfzgTWvF0Nfzevk6PMAD6RRBi3SpPcOyhL8l6+z4gfHUj8J6vwdu0K4rUC+V41rmlgkTtA3jF1e5PVAAIKDElxn38gMJOD0XQRA1nRVgISEDK9IJlSEXHBsDHKKWGpkjx6DTu/jyZ+aoAIlRen7Ziz0ytDxiU+wQBeYdhCgD6cBwE4CGMAPgANZKtQViw58fqIJOTJGBIBqaCgMNVb3om7M2ApPxf/yAIYiQOLoPD2EDfMzeIm1aBG/DkpAIX8CMi6Ax51jVIA+YAv8pwvsvEUqiqWmVsYYpMAr5QTjopj88CZJ7C8FJ5K1g9Wl/W5GeDI9qW9pdV4+wmAF0M4O8vrP97j5CN5Qk5STub0HBKo1bF3MiR8csfSjUubTtq9kp7euclJ9TP/QMm1/P78NTth62/uCvcn6B4PhvplouX/nsdsfvb7hG404HENpB7F3fDTnzj1yKHyQqdnXe4+T3cBWvzl+nZdUPXnu/antu0ktmEjikt/P0lzSUixeCY7YSU81SUtOLOFfcB7B4dpkroyThV8kia/YMmQ2GP1zp7z6SmX2lkcFWGT13vbs4eiX7UrV6JUNepvEheeuzUnY+LBCoy4ywtqsfyz6Nbq7289pz79wSMqlxPhdg2bFfWEwJBdTzZ5BU2zpucEw+msGs5cuGlm++lSjxnl2dHOlMDsZ9tmu4Y+8jPLEweTwfACktMHM///WnHl01mdNX/S591+Ptpu9/cQMk51Hz/8KnR+yvHV6sD1ntK/bvBYSKp7WllrWeqZoxlk539PfAx4AoBOtZxkermhZdGFgFnP4F/4GUm1ae4Fhy39CcgwAuF/fLWjViUE3+gulN6a/eXrDNq4wdTmPkVgWTY3nKiXAjUyGIADvOwSY+DaEwRxEGkJwdAiUwhEYwQPJsUEg0cSATEgHwdf4yRpTq0QjMYkAH7sAEGauAWXgCBgzH5Ec+w8kFoGAzCxYgpAXis+p8QjVIpWiwFAm4kqiS66jmE6WJInipClUI5ZAU2XBa+aQ+rrrkMqyipxgPzpIhzrAX6ZWMaYQhbo26WM3Q8tyiUddAyVWpjHmNZWXK0XPVCa5NiRJRSEBg2SEaCVCJ3E5FMfDJClRqhZ8/BSkirAIaGVNOXcOonw6mp+oVKaiEbKf5zSsurRlvmVUVRgGtxMKymUj+rppkGX4XIRXvM6AJEwZrYPH06QcdVOa8sqmF9h3uwdA0J+Mh0iIhpgQS39TQ0eVUBHUiF4VX+E6qhapjC1Hh+kAAAAA') format('woff2'),
+  url('iconfont.woff?t=1548592520726') format('woff'),
+  url('iconfont.ttf?t=1548592520726') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1548592520726#cbiconfont') format('svg'); /* iOS 4.1- */
+}
+
+.cbiconfont {
+  font-family: "cbiconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cbicon-policy:before {
+  content: "\e659";
+}
+
+.cbicon-user:before {
+  content: "\e634";
+}
+
+.cbicon-qa:before {
+  content: "\e605";
+}
+
