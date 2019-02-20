@@ -33,6 +33,9 @@ export default {
 </script>
 
 <style lang="scss" scoped="scoped">
+.slide_bar{
+  padding-top: .8rem;
+}
 .slidebarblue{
   color: #0178ff;
 }

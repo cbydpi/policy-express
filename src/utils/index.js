@@ -12,5 +12,7 @@ export function routeName (path) {
       return '咨询'
     case 'info':
       return '我的'
+    case 'policyInfo':
+      return '政策详情'
   }
 }

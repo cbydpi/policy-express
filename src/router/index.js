@@ -18,6 +18,7 @@ const router = new Router({
       children: [
         { path: '/policy', component: _import('policy'), name: 'policy', desc: '列表', meta: {auth: true} },
         { path: '/qa', component: _import('qa'), name: 'qa', desc: '咨询', meta: {auth: true} },
+        { path: '/policyInfo', component: _import('policyInfo'), name: 'policyInfo', desc: '政策详情', meta: {auth: true} },
         { path: '/info', component: _import('info'), name: 'info', desc: '我的', meta: {auth: true} }
       ]
     }

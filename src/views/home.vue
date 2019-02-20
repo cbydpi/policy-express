@@ -18,7 +18,7 @@
         </el-col>
         <el-col :offset="4" :span="6" style="text-align: center;">
           <img src="@/assets/images/user.png" style="width: 70%;"/>
-          <h3 style="color: #ff8811;margin: 0;margin-top: 2%;">50000人</h3>
+          <h3 style="color: #ff8811;margin: 0;margin-top: 2%;">116家</h3>
           <p style="margin: 2% 0;">企业用户总数</p>
         </el-col>
       </el-row>
@@ -42,9 +42,9 @@
         <h3 class="dialogHeader_h">企业资质</h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog1">
-        <el-radio v-model="homeTest.dialog1" label="1" border class="dialogBody_radio1">国家高新技术企业</el-radio>
-        <el-radio v-model="homeTest.dialog1" label="2" border  class="dialogBody_radio2">国家高新技术企业</el-radio>
-        <el-radio v-model="homeTest.dialog1" label="3" border  class="dialogBody_radio2">无</el-radio>
+        <el-radio v-model="homeTest.dialog1" label="国家高新技术企业" border class="dialogBody_radio1">国家高新技术企业</el-radio>
+        <el-radio v-model="homeTest.dialog1" label="中关村高新技术企业" border  class="dialogBody_radio2">中关村高新技术企业</el-radio>
+        <el-radio v-model="homeTest.dialog1" label="无" border  class="dialogBody_radio2">无</el-radio>
       </div>
       <span slot="footer" v-if="visibleDialog1">
         <el-button type="primary" @click="showDialog2">下一步</el-button>
@@ -57,16 +57,16 @@
         <h3 class="dialogHeader_h">所属领域</h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog2">
-        <el-radio v-model="homeTest.dialog2" label="1" border class="dialogBody_radio1">新一代信息技术</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="2" border class="dialogBody_radio2">集成电路</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="3" border class="dialogBody_radio2">医药健康</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="4" border class="dialogBody_radio2">智能装备产业</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="5" border class="dialogBody_radio2">节能环保</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="6" border class="dialogBody_radio2">新能源智能汽车</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="7" border class="dialogBody_radio2">新材料</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="8" border class="dialogBody_radio2">人工智能</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="9" border class="dialogBody_radio2">软件和信息服务</el-radio>
-        <el-radio v-model="homeTest.dialog2" label="10" border class="dialogBody_radio2">科技服务业</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="新一代信息技术" border class="dialogBody_radio1">新一代信息技术</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="集成电路" border class="dialogBody_radio2">集成电路</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="医药健康" border class="dialogBody_radio2">医药健康</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="智能装备产业" border class="dialogBody_radio2">智能装备产业</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="节能环保" border class="dialogBody_radio2">节能环保</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="新能源智能汽车" border class="dialogBody_radio2">新能源智能汽车</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="新材料" border class="dialogBody_radio2">新材料</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="人工智能" border class="dialogBody_radio2">人工智能</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="软件和信息服务" border class="dialogBody_radio2">软件和信息服务</el-radio>
+        <el-radio v-model="homeTest.dialog2" label="科技服务业" border class="dialogBody_radio2">科技服务业</el-radio>
       </div>
       <span slot="footer" v-if="visibleDialog2">
         <span class="dialogFooter_mark">2/9</span>
@@ -80,10 +80,10 @@
         <h3 class="dialogHeader_h">成立年限</h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog3">
-        <el-radio v-model="homeTest.dialog3" label="1" border class="dialogBody_radio1">1年以内</el-radio>
-        <el-radio v-model="homeTest.dialog3" label="2" border class="dialogBody_radio2">1-3年</el-radio>
-        <el-radio v-model="homeTest.dialog3" label="3" border class="dialogBody_radio2">4-6年</el-radio>
-        <el-radio v-model="homeTest.dialog3" label="4" border class="dialogBody_radio2">7年以上</el-radio>
+        <el-radio v-model="homeTest.dialog3" label="1年以内" border class="dialogBody_radio1">1年以内</el-radio>
+        <el-radio v-model="homeTest.dialog3" label="1-3年" border class="dialogBody_radio2">1-3年</el-radio>
+        <el-radio v-model="homeTest.dialog3" label="4-6年" border class="dialogBody_radio2">4-6年</el-radio>
+        <el-radio v-model="homeTest.dialog3" label="7年以上" border class="dialogBody_radio2">7年以上</el-radio>
       </div>
       <span slot="footer" v-if="visibleDialog3">
         <span class="dialogFooter_mark">3/9</span>
@@ -97,8 +97,8 @@
         <h3 class="dialogHeader_h">注册地址</h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog4">
-        <el-radio v-model="homeTest.dialog4" label="1" border class="dialogBody_radio1">海淀区</el-radio>
-        <el-radio v-model="homeTest.dialog4" label="2" border class="dialogBody_radio2">中关村示范区内</el-radio>
+        <el-radio v-model="homeTest.dialog4" label="海淀区" border class="dialogBody_radio1">海淀区</el-radio>
+        <el-radio v-model="homeTest.dialog4" label="中关村示范区内" border class="dialogBody_radio2">中关村示范区内</el-radio>
       </div>
       <span slot="footer" v-if="visibleDialog4">
         <span class="dialogFooter_mark">4/9</span>
@@ -112,8 +112,8 @@
         <h3 class="dialogHeader_h">创业人群</h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog5">
-        <el-radio v-model="homeTest.dialog5" label="1" border class="dialogBody_radio1">留学人员</el-radio>
-        <el-radio v-model="homeTest.dialog5" label="2" border class="dialogBody_radio2">非留学人员</el-radio>
+        <el-radio v-model="homeTest.dialog5" label="留学人员" border class="dialogBody_radio1">留学人员</el-radio>
+        <el-radio v-model="homeTest.dialog5" label="非留学人员" border class="dialogBody_radio2">非留学人员</el-radio>
       </div>
       <span slot="footer" v-if="visibleDialog5">
         <span class="dialogFooter_mark">5/9</span>
@@ -127,9 +127,9 @@
         <h3 class="dialogHeader_h">研发投入占比<br><p style="font-size: 1.2rem;color: #ccc;">(占全年总投入金额的比例)</p></h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog6">
-        <el-radio v-model="homeTest.dialog6" label="1" border class="dialogBody_radio1">10%-20%</el-radio>
-        <el-radio v-model="homeTest.dialog6" label="2" border class="dialogBody_radio2">30%-40%</el-radio>
-        <el-radio v-model="homeTest.dialog6" label="3" border class="dialogBody_radio2">50%以上</el-radio>
+        <el-radio v-model="homeTest.dialog6" label="10%-20%" border class="dialogBody_radio1">10%-20%</el-radio>
+        <el-radio v-model="homeTest.dialog6" label="30%-40%" border class="dialogBody_radio2">30%-40%</el-radio>
+        <el-radio v-model="homeTest.dialog6" label="50%以上" border class="dialogBody_radio2">50%以上</el-radio>
       </div>
       <span slot="footer" v-if="visibleDialog6">
         <span class="dialogFooter_mark">6/9</span>
@@ -143,12 +143,12 @@
         <h3 class="dialogHeader_h">企业营收<br><p style="font-size: 1.2rem;color: #ccc;">(上一年的企业营收总额)</p></h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog7">
-        <el-radio v-model="homeTest.dialog7" label="1" border class="dialogBody_radio1">0-50万</el-radio>
-        <el-radio v-model="homeTest.dialog7" label="2" border class="dialogBody_radio2">50-100万</el-radio>
-        <el-radio v-model="homeTest.dialog7" label="3" border class="dialogBody_radio2">100-500万</el-radio>
-        <el-radio v-model="homeTest.dialog7" label="4" border class="dialogBody_radio2">500-1000万</el-radio>
-        <el-radio v-model="homeTest.dialog7" label="5" border class="dialogBody_radio2">1000-5000万</el-radio>
-        <el-radio v-model="homeTest.dialog7" label="6" border class="dialogBody_radio2">5000万-1亿</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="0-50万" border class="dialogBody_radio1">0-50万</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="50-100万" border class="dialogBody_radio2">50-100万</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="100-500万" border class="dialogBody_radio2">100-500万</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="500-1000万" border class="dialogBody_radio2">500-1000万</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="1000-5000万" border class="dialogBody_radio2">1000-5000万</el-radio>
+        <el-radio v-model="homeTest.dialog7" label="5000万-1亿" border class="dialogBody_radio2">5000万-1亿</el-radio>
       </div>
       <span slot="footer" v-if="visibleDialog7">
         <span class="dialogFooter_mark">7/9</span>
@@ -162,12 +162,12 @@
         <h3 class="dialogHeader_h">融资额度</h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog8">
-        <el-radio v-model="homeTest.dialog8" label="1" border class="dialogBody_radio1">0-50万</el-radio>
-        <el-radio v-model="homeTest.dialog8" label="2" border class="dialogBody_radio2">50-100万</el-radio>
-        <el-radio v-model="homeTest.dialog8" label="3" border class="dialogBody_radio2">100-500万</el-radio>
-        <el-radio v-model="homeTest.dialog8" label="4" border class="dialogBody_radio2">500-1000万</el-radio>
-        <el-radio v-model="homeTest.dialog8" label="5" border class="dialogBody_radio2">1000-5000万</el-radio>
-        <el-radio v-model="homeTest.dialog8" label="6" border class="dialogBody_radio2">5000万-1亿</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="0-50万" border class="dialogBody_radio1">0-50万</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="50-100万" border class="dialogBody_radio2">50-100万</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="100-500万" border class="dialogBody_radio2">100-500万</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="500-1000万" border class="dialogBody_radio2">500-1000万</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="1000-5000万" border class="dialogBody_radio2">1000-5000万</el-radio>
+        <el-radio v-model="homeTest.dialog8" label="5000万-1亿" border class="dialogBody_radio2">5000万-1亿</el-radio>
       </div>
       <span slot="footer" v-if="visibleDialog8">
         <span class="dialogFooter_mark">8/9</span>
@@ -181,8 +181,8 @@
         <h3 class="dialogHeader_h">自主知识产权</h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog9">
-        <el-radio v-model="homeTest.dialog9" label="1" border class="dialogBody_radio1">有</el-radio>
-        <el-radio v-model="homeTest.dialog9" label="2" border class="dialogBody_radio2">无</el-radio>
+        <el-radio v-model="homeTest.dialog9" label="有" border class="dialogBody_radio1">有</el-radio>
+        <el-radio v-model="homeTest.dialog9" label="无" border class="dialogBody_radio2">无</el-radio>
       </div>
       <span slot="footer" v-if="visibleDialog9">
         <span class="dialogFooter_mark">9/9</span>
@@ -195,6 +195,9 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">企业资质</h3>
       </span>
+      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog10">
+        <img style="width: 100%;" src="@/assets/images/testr.png"/>
+      </div>
       <span slot="footer" v-if="visibleDialog10">
         <el-button type="primary" @click="finishTest">我知道了</el-button>
       </span>
@@ -232,6 +235,17 @@ export default {
   },
   mounted () {
     this.showFooter = true
+    this.homeTest = {
+      dialog1: null,
+      dialog2: null,
+      dialog3: null,
+      dialog4: null,
+      dialog5: null,
+      dialog6: null,
+      dialog7: null,
+      dialog8: null,
+      dialog9: null
+    }
   },
   methods: {
     showDialog1 () {
@@ -380,6 +394,31 @@ export default {
         this.$message.error('请选择')
         return
       }
+      let data = {
+        'openid': '1234567',
+        'bizType': this.homeTest.dialog1,
+        'bizDomain': this.homeTest.dialog2,
+        'bizYear': this.homeTest.dialog3,
+        'bizArea': this.homeTest.dialog4,
+        'bizPeople': this.homeTest.dialog5,
+        'bizSupport': this.homeTest.dialog6,
+        'bizIncome': this.homeTest.dialog7,
+        'bizLimit': this.homeTest.dialog8,
+        'bizKnowledge': this.homeTest.dialog9,
+        'updateType': 'test'
+      }
+      this.$http.post(this.URL + 'policyTest', JSON.stringify(data)).then(
+        function (res) {
+          console.log(res)
+          if (res.data.code === 0) {
+
+          } else {
+            this.$message.error(res.data.msg)
+          }
+        }, function (res) {
+        // 处理失败的结果
+        }
+      )
       this.visibleDialog1 = false
       this.visibleDialog2 = false
       this.visibleDialog3 = false
@@ -390,10 +429,10 @@ export default {
       this.visibleDialog8 = false
       this.visibleDialog9 = false
       this.visibleDialog10 = true
-      console.log(this.homeTest)
     },
     finishTest () {
       this.visibleDialog = false
+      this.$router.push({ name: 'policy' })
     },
     linkDefault () {
       this.$router.push({ name: 'policy' })
@@ -418,6 +457,7 @@ export default {
 .dialogBody_radio1{
   width: 80%;
   text-align: left;
+  margin: 0;
 }
 .dialogBody_radio2{
   width: 80%;

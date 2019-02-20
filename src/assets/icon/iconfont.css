@@ -1,10 +1,10 @@
 @font-face {font-family: "cbiconfont";
-  src: url('iconfont.eot?t=1548592520726'); /* IE9 */
-  src: url('iconfont.eot?t=1548592520726#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAARoAAsAAAAACLgAAAQZAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqEWIQPATYCJAMQCwoABCAFhQUHSRuaB8guIScbXkRVpNkwGSnFpUvg3ZYr4PMO+dja2xtYyGwR0ANJtE1tU0VIRgCBJlW+k///9P67+VIJT8ovYrcLbuAzmbdg8heu4BpyCaBk0S0P8Mfy/btFhc7WlGHVFG2jjYIirYGiwUfzgTWvF0Nfzevk6PMAD6RRBi3SpPcOyhL8l6+z4gfHUj8J6vwdu0K4rUC+V41rmlgkTtA3jF1e5PVAAIKDElxn38gMJOD0XQRA1nRVgISEDK9IJlSEXHBsDHKKWGpkjx6DTu/jyZ+aoAIlRen7Ziz0ytDxiU+wQBeYdhCgD6cBwE4CGMAPgANZKtQViw58fqIJOTJGBIBqaCgMNVb3om7M2ApPxf/yAIYiQOLoPD2EDfMzeIm1aBG/DkpAIX8CMi6Ax51jVIA+YAv8pwvsvEUqiqWmVsYYpMAr5QTjopj88CZJ7C8FJ5K1g9Wl/W5GeDI9qW9pdV4+wmAF0M4O8vrP97j5CN5Qk5STub0HBKo1bF3MiR8csfSjUubTtq9kp7euclJ9TP/QMm1/P78NTth62/uCvcn6B4PhvplouX/nsdsfvb7hG404HENpB7F3fDTnzj1yKHyQqdnXe4+T3cBWvzl+nZdUPXnu/antu0ktmEjikt/P0lzSUixeCY7YSU81SUtOLOFfcB7B4dpkroyThV8kia/YMmQ2GP1zp7z6SmX2lkcFWGT13vbs4eiX7UrV6JUNepvEheeuzUnY+LBCoy4ywtqsfyz6Nbq7289pz79wSMqlxPhdg2bFfWEwJBdTzZ5BU2zpucEw+msGs5cuGlm++lSjxnl2dHOlMDsZ9tmu4Y+8jPLEweTwfACktMHM///WnHl01mdNX/S591+Ptpu9/cQMk51Hz/8KnR+yvHV6sD1ntK/bvBYSKp7WllrWeqZoxlk539PfAx4AoBOtZxkermhZdGFgFnP4F/4GUm1ae4Fhy39CcgwAuF/fLWjViUE3+gulN6a/eXrDNq4wdTmPkVgWTY3nKiXAjUyGIADvOwSY+DaEwRxEGkJwdAiUwhEYwQPJsUEg0cSATEgHwdf4yRpTq0QjMYkAH7sAEGauAWXgCBgzH5Ec+w8kFoGAzCxYgpAXis+p8QjVIpWiwFAm4kqiS66jmE6WJInipClUI5ZAU2XBa+aQ+rrrkMqyipxgPzpIhzrAX6ZWMaYQhbo26WM3Q8tyiUddAyVWpjHmNZWXK0XPVCa5NiRJRSEBg2SEaCVCJ3E5FMfDJClRqhZ8/BSkirAIaGVNOXcOonw6mp+oVKaiEbKf5zSsurRlvmVUVRgGtxMKymUj+rppkGX4XIRXvM6AJEwZrYPH06QcdVOa8sqmF9h3uwdA0J+Mh0iIhpgQS39TQ0eVUBHUiF4VX+E6qhapjC1Hh+kAAAAA') format('woff2'),
-  url('iconfont.woff?t=1548592520726') format('woff'),
-  url('iconfont.ttf?t=1548592520726') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  url('iconfont.svg?t=1548592520726#cbiconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1548795239087'); /* IE9 */
+  src: url('iconfont.eot?t=1548795239087#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAToAAsAAAAACWAAAAScAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqFXIR4ATYCJAMUCwwABCAFhQUHUxsnCFFUToJkf0YYcOy2f5CKQJBOzK5jUBhwruHKcUMoD9eH3fSdfrUvP0wlJJEQEmxL/ogBQATP7/dtzrV9e/+aNHUyyTuJKpY2oRJJUDuhEJJoqHtpM1cHD4D67j9grgLMuvOeLB+OLD9VQeoyPWOPHUMHVGX6DL/ufXebvzkrgYogPpzgKRINSgDblhyXoKHm4CEzl6TWZUl0epu4LNyZ9YWaA+39/TrrLU7nBhlGIlVKJrLuLP0zqYSiVUWdQ5vDuUj0Wjs+F8dKL8cPsNauHLP7SyjHi96qQigSxH8Yu7iM/Ql0K8Yh1+YsWgVlCm2xQJwJzqAsplZKcGGQtZx1i/gi05A++RDAZ/fz4w+kYiCpmbbsjYezszDtu7mnbz9gk40Qpz8jmI3IOAIK8SjXfEb3w0d0XZrZcAnoBknqa6rMd9+8/yfkr0ja9TBZkv55otHEExB7KVL4bppkMt8zZBLf15MJvnvcGyOuaOGOeeAXQBwA7Nb0gyRrk5On+YNWDe8E12G+BxMu3gVb2zsxOIlA9HSR1iniTZErNBM9edkI9CwAKk/ssbQLMY4ews4aWJGTurgzwFUQRjHOKNWbalGwTrR8il6rmIYswtAa2hH6bv46OFmHlGsGtQhU63m6nHDmlpubtW+u17y6XPX6arUtrBUXIXWKt8G5a+7fkNyH2Hjy5uYBwhXAzOXEMKuCNzZ/M83bsJWD9RWQDAToa81jS03bKqKZpKwl4xS+hl18400mT127huROPdSj7WuigLgLJ+0kV+NrImMz2J1GPsP58foiSZEwC79IhJ2vJImYqL/t5CRX/Roluxyw7JLa8MZk/WxGqf+a2yPwGhRCHmffm7Oe+6xNw2d1gU3mvu/4g07UUad2LLtTm86npNxqo2VWgY82WBZT40FLIzM+tBEsSyV2FO2E1as0HK+E9e0olFAtsGHHfEZv3/AZ7AGCGcH2AJHuiTU9/49knrHde+fo8x8fV62A2ftPY8ywr6v1m3TL50xbOX8qI3XOTPcuCes/4kdGx0Jn3TcHI2tnzZ0FWZryJsOoGze+t/JzxpQdkPv/XZ7M/yNzzZXPvvaqqMd33zDAObqIDBevXq8P4BfsaGD3K83nwa32r9VO2oC4hoO+DX7hyHWOAdqz755Ebc6Pw6nZp8g8TVOL2GyyxczqvTJeAvcfafhd7HO+9CNdrB0k9BiHgWTMKmTdDrJgL0A1chGa7jp0h5ZuPDJvlC7KOA4cARAW3IVkylfIFrxHFuxfqJYioFmIZehuxthtjuzEx0ZLZAqz1Bqhwg4Dx/CpCtsSxlqBvOgxmWjw37IGZUGEAU3GEhmxuRig7GuFwiBPKeVQR4Y+ncMcDD0vpJEM82irWE6paEI87uTdUcwOfahwlYQYBWVRlhGUYAsFHDuoVLgnt8z5/BUQV+RhZGlbqXwNJBUINHkqKSZRCzlXHNRsObeZCgZxKYqCC1MOKeSj5rQzIk8Ph6gof648ZFNici2CkQniaCCnrjg2vtS/3qOg016hRoocJWo0k69yGHAbHcaLIlX6Mgx4rpg0n2OgRKklWJAXSQA=') format('woff2'),
+  url('iconfont.woff?t=1548795239087') format('woff'),
+  url('iconfont.ttf?t=1548795239087') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1548795239087#cbiconfont') format('svg'); /* iOS 4.1- */
 }
 
 .cbiconfont {
@@ -25,5 +25,9 @@
 
 .cbicon-qa:before {
   content: "\e605";
+}
+
+.cbicon-edit:before {
+  content: "\e66c";
 }
 
