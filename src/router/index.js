@@ -7,8 +7,8 @@ Vue.use(Router)
 const router = new Router({
   routes: [
     { path: '/error', component: _import('error'), name: 'error', desc: '报错页' },
-    { path: '/', component: _import('home'), name: 'homePage', desc: '首页', meta: {auth: true} },
-    { path: '/home', component: _import('home'), name: 'home', desc: '首页', meta: {auth: true} },
+    { path: '/', component: _import('home'), name: 'homePage', desc: '首页', meta: {auth: true}, query: {id: '123'} },
+    { path: '/home', component: _import('home'), name: 'home', desc: '首页', meta: {auth: true}, query: {id: '123'} },
     {
       path: '/',
       component: _import('layout/index'),
@@ -27,6 +27,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   /* eslint-disable */
+  var str = window.location.href
   var browser = {
     versions: function () {
       var u = navigator.userAgent
@@ -51,7 +52,16 @@ router.beforeEach((to, from, next) => {
     if (ua.indexOf('micromessenger') === -1 && to.path !== '/error') {
       // 在微信中打开
       next()
+      console.log('this.wsURL')
+      // this.$cookie.set('token', data.token, { expires: `${data.expire || 0}s` })
     } else {
+      console.log(from.fullPath)
+      if (str.indexOf('code=') === -1) {
+//      next()
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fwx.ofaai.com%2Fpolicy%2F%23%2Fhome&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect'
+      } else {
+        next()
+      }
       // window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx606d5147a434e84b&redirect_uri=' + encodeURIComponent('http://192.168.31.141:8080') + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'
       next()
     }

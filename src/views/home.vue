@@ -41,7 +41,7 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">企业资质</h3>
       </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog1">
+      <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;" v-if="visibleDialog1">
         <el-radio v-model="homeTest.dialog1" label="国家高新技术企业" border class="dialogBody_radio1">国家高新技术企业</el-radio>
         <el-radio v-model="homeTest.dialog1" label="中关村高新技术企业" border  class="dialogBody_radio2">中关村高新技术企业</el-radio>
         <el-radio v-model="homeTest.dialog1" label="无" border  class="dialogBody_radio2">无</el-radio>
@@ -56,7 +56,7 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">所属领域</h3>
       </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog2">
+      <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog2">
         <el-radio v-model="homeTest.dialog2" label="新一代信息技术" border class="dialogBody_radio1">新一代信息技术</el-radio>
         <el-radio v-model="homeTest.dialog2" label="集成电路" border class="dialogBody_radio2">集成电路</el-radio>
         <el-radio v-model="homeTest.dialog2" label="医药健康" border class="dialogBody_radio2">医药健康</el-radio>
@@ -79,7 +79,7 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">成立年限</h3>
       </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog3">
+      <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog3">
         <el-radio v-model="homeTest.dialog3" label="1年以内" border class="dialogBody_radio1">1年以内</el-radio>
         <el-radio v-model="homeTest.dialog3" label="1-3年" border class="dialogBody_radio2">1-3年</el-radio>
         <el-radio v-model="homeTest.dialog3" label="4-6年" border class="dialogBody_radio2">4-6年</el-radio>
@@ -96,7 +96,7 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">注册地址</h3>
       </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog4">
+      <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog4">
         <el-radio v-model="homeTest.dialog4" label="海淀区" border class="dialogBody_radio1">海淀区</el-radio>
         <el-radio v-model="homeTest.dialog4" label="中关村示范区内" border class="dialogBody_radio2">中关村示范区内</el-radio>
       </div>
@@ -111,7 +111,7 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">创业人群</h3>
       </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog5">
+      <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog5">
         <el-radio v-model="homeTest.dialog5" label="留学人员" border class="dialogBody_radio1">留学人员</el-radio>
         <el-radio v-model="homeTest.dialog5" label="非留学人员" border class="dialogBody_radio2">非留学人员</el-radio>
       </div>
@@ -126,7 +126,7 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">研发投入占比<br><p style="font-size: 1.2rem;color: #ccc;">(占全年总投入金额的比例)</p></h3>
       </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog6">
+      <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog6">
         <el-radio v-model="homeTest.dialog6" label="10%-20%" border class="dialogBody_radio1">10%-20%</el-radio>
         <el-radio v-model="homeTest.dialog6" label="30%-40%" border class="dialogBody_radio2">30%-40%</el-radio>
         <el-radio v-model="homeTest.dialog6" label="50%以上" border class="dialogBody_radio2">50%以上</el-radio>
@@ -142,7 +142,7 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">企业营收<br><p style="font-size: 1.2rem;color: #ccc;">(上一年的企业营收总额)</p></h3>
       </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog7">
+      <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog7">
         <el-radio v-model="homeTest.dialog7" label="0-50万" border class="dialogBody_radio1">0-50万</el-radio>
         <el-radio v-model="homeTest.dialog7" label="50-100万" border class="dialogBody_radio2">50-100万</el-radio>
         <el-radio v-model="homeTest.dialog7" label="100-500万" border class="dialogBody_radio2">100-500万</el-radio>
@@ -161,7 +161,7 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">融资额度</h3>
       </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog8">
+      <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog8">
         <el-radio v-model="homeTest.dialog8" label="0-50万" border class="dialogBody_radio1">0-50万</el-radio>
         <el-radio v-model="homeTest.dialog8" label="50-100万" border class="dialogBody_radio2">50-100万</el-radio>
         <el-radio v-model="homeTest.dialog8" label="100-500万" border class="dialogBody_radio2">100-500万</el-radio>
@@ -180,7 +180,7 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">自主知识产权</h3>
       </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog9">
+      <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog9">
         <el-radio v-model="homeTest.dialog9" label="有" border class="dialogBody_radio1">有</el-radio>
         <el-radio v-model="homeTest.dialog9" label="无" border class="dialogBody_radio2">无</el-radio>
       </div>
@@ -195,7 +195,7 @@
         <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
         <h3 class="dialogHeader_h">企业资质</h3>
       </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog10">
+      <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog10">
         <img style="width: 100%;" src="@/assets/images/testr.png"/>
       </div>
       <span slot="footer" v-if="visibleDialog10">
@@ -234,6 +234,20 @@ export default {
     }
   },
   mounted () {
+//  console.log(this.$route.query.code)
+    if (window.location.href.indexOf('code=') !== -1) {
+      let str = window.location.href
+      this.$http({
+        url: this.URL + 'getOpenid?code=' + str.slice(str.indexOf('code=')+5, str.indexOf('&state')),
+        method: 'get'
+      }).then(({data}) => {
+        if (data && data.code === 0) {
+          this.$cookie.set('code', this.$route.query.code)
+          this.$cookie.set('openid', data.openid)
+        } else {
+        }
+      })
+    }
     this.showFooter = true
     this.homeTest = {
       dialog1: null,
@@ -395,7 +409,7 @@ export default {
         return
       }
       let data = {
-        'openid': '1234567',
+        'openid': this.$cookie.get('openid'),
         'bizType': this.homeTest.dialog1,
         'bizDomain': this.homeTest.dialog2,
         'bizYear': this.homeTest.dialog3,
@@ -441,7 +455,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped="scoped">
+<style lang="scss">
+.el-icon-close{
+  font-size: 2rem;
+  font-weight: bold;
+}
 .dialogHeader_image{
   width: 100%;
   position: absolute;
@@ -470,5 +488,8 @@ export default {
   bottom: 1.5rem;
   left: 1.5rem;
   color: #ccc;
+}
+.el-radio{
+  margin-right: 0!important;
 }
 </style>

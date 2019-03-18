@@ -5,7 +5,13 @@
         <h3 style="text-align: center;margin: 0;" v-if="policyData">{{policyData.name}}</h3>
       </el-header>
       <el-main style="height: 100%!important;padding: 5px;" v-if="policyData">
-        <div class="listStyle" v-for="(value,index) in policyData.contentList" v-bind:key="index">
+        <div class="info" v-for="(value,index) in policyData.contentList" v-if="value.paramSign === '受理单位' || value.paramSign === '联系方式'">
+          {{value.paramSign}}：{{value.content}}
+        </div>
+        <div class="money" v-for="(value,index) in policyData.contentList" v-if="value.paramSign === '政策支持'">
+          {{value.content}}
+        </div>
+        <div class="listStyle" v-for="(value,index) in policyData.contentList" v-bind:key="index" v-if="value.paramSign !== '政策支持'">
           <div></div>
           <h4>{{value.paramSign}}</h4>
           <p>{{value.content}}</p>
@@ -50,6 +56,22 @@ export default {
 </script>
 
 <style lang="scss" scoped="scoped">
+.info{
+  padding: .5rem;
+}
+.money{
+  width: 80%;
+  margin: 0 auto;
+  min-height: 6rem;
+  line-height: 3rem;
+  color: #fff;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: left;
+  background-image: url('~@/assets/images/moneybg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 .listStyle{
   padding: 1rem;
   border-left: solid 1px #ccc;

@@ -10,9 +10,10 @@ import '@/assets/scss/index.css'
 import VueCookie from 'vue-cookie'
 import httpRequest from '@/utils/httpRequest'
 import '@/assets/icon/iconfont.css'
-import Mint from 'mint-ui'
-import 'mint-ui/lib/style.css'
-Vue.use(Mint)
+import VueAweSomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAweSomeSwiper)
 
 const URL = 'http://wx.ofaai.com:8383/nature/wx/'
 const wsURL = 'ws://39.105.41.93:8282/renren-fast/'

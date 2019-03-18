@@ -3,7 +3,7 @@
     <el-container style='height: 100%;width: 100%;' v-if="!showInfo">
       <el-header style="height: 100px;padding: 0;overflow: hidden;">
         <img style="width: 100%;position: absolute;height: 100px;" src="@/assets/images/userinbg.png"/>
-        <div style="position: absolute;text-align: left;width: 100%;padding-top: 25px;color: #fff;overflow: hidden;">
+        <div style="position: absolute;text-align: left;width: 100%;padding-top: 25px;color: #fff;overflow: hidden;" v-if="userData !== null">
           <i style="font-size: 2.5rem;color: #ffffff;margin-left: 2rem;" class="cbiconfont cbicon-user"></i>
           {{userData.nickname}}
           <i style="font-size: 2.5rem;color: #ffffff;position: absolute;right: 2rem;" class="cbiconfont cbicon-edit" @click="getInfo"></i>
@@ -12,42 +12,56 @@
       <el-main style="height: 100%!important;padding: 0px;">
         <el-tabs :stretch="true">
           <el-tab-pane label="我的记录">
-            <el-card v-if="userData.logs && userData" v-for="value in userData.logs" :key="value.policySign">
-              <p>政策标题：{{value.policySign}}</p>
-              <p>匹配度：{{value.matchScore}}%</p>
+            <el-card v-if="userData.logs && userData" v-for="value in userData.logs" :key="value.policySign"  @click.native="policyInfo(value.policySign)">
+              <el-row>
+                <el-col :span="8">
+                  <div class="orange line bold">{{value.money}}</div>
+                  <div class="line">匹配度：{{value.matchScore}}%</div>
+                </el-col>
+                <el-col :span="16">
+                  <div class="line font-color">政策标题：{{value.policySign}}</div>
+                  <div class="line font-color">申报时间：{{value.declareDate}}</div>
+                </el-col>
+              </el-row>
             </el-card>
           </el-tab-pane>
         </el-tabs>
       </el-main>
     </el-container>
-    <div v-if="showInfo">
-      <el-form>
+    <div v-if="showInfo" style="padding: 0 5px;">
+      <el-form label-width="80px">
+        <el-form-item label="企业名称">
+          <el-input v-model="bizName" @blur="changebizName()"></el-input>
+        </el-form-item>
+        <el-form-item label="联系方式">
+          <el-input v-model="phone" @blur="changePhone()"></el-input>
+        </el-form-item>
         <el-form-item label="企业资质">
-          <el-input disabled @click.native="showDialog1" v-model="bizType"></el-input>
+          <el-input disabled @click.native="showSwiper(1)" v-model="bizType"></el-input>
         </el-form-item>
         <el-form-item label="所属领域">
-          <el-input disabled @click.native="showDialog2" v-model="bizDomain"></el-input>
+          <el-input disabled @click.native="showSwiper(2)" v-model="bizDomain"></el-input>
         </el-form-item>
         <el-form-item label="成立年限">
-          <el-input disabled @click.native="showDialog3" v-model="bizYear"></el-input>
+          <el-input disabled @click.native="showSwiper(3)" v-model="bizYear"></el-input>
         </el-form-item>
         <el-form-item label="注册地址">
-          <el-input disabled @click.native="showDialog4" v-model="bizArea"></el-input>
+          <el-input disabled @click.native="showSwiper(4)" v-model="bizArea"></el-input>
         </el-form-item>
         <el-form-item label="创业人群">
-          <el-input disabled @click.native="showDialog5" v-model="bizPeople"></el-input>
+          <el-input disabled @click.native="showSwiper(5)" v-model="bizPeople"></el-input>
         </el-form-item>
         <el-form-item label="研发投入占比">
-          <el-input disabled @click.native="showDialog6" v-model="bizSupport"></el-input>
+          <el-input disabled @click.native="showSwiper(6)" v-model="bizSupport"></el-input>
         </el-form-item>
         <el-form-item label="企业营收">
-          <el-input disabled @click.native="showDialog7" v-model="bizIncome"></el-input>
+          <el-input disabled @click.native="showSwiper(7)" v-model="bizIncome"></el-input>
         </el-form-item>
         <el-form-item label="融资额度">
-          <el-input disabled @click.native="showDialog8" v-model="bizLimit"></el-input>
+          <el-input disabled @click.native="showSwiper(8)" v-model="bizLimit"></el-input>
         </el-form-item>
         <el-form-item label="自主知识产权">
-          <el-input disabled @click.native="showDialog9" v-model="bizKnowledge"></el-input>
+          <el-input disabled @click.native="showSwiper(9)" v-model="bizKnowledge"></el-input>
         </el-form-item>
         <el-form-item size="large">
           <el-button type="primary" @click="showInfo=false">确定</el-button>
@@ -55,151 +69,18 @@
         </el-form-item>
       </el-form>
     </div>
-        <!--弹窗开始-->
-    <!--弹窗1-->
-    <el-dialog
-      title=""
-      :visible.sync="visibleDialog"
-      :modal="true"
-      :close-on-click-modal="false"
-      :center="true"
-      width="90%">
-      <span slot="title" class="clearfix" v-if="visibleDialog1">
-        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
-        <h3 class="dialogHeader_h">企业资质</h3>
-      </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog1">
-        <el-radio v-model="bizType" label="国家高新技术企业" border class="dialogBody_radio1">国家高新技术企业</el-radio>
-        <el-radio v-model="bizType" label="中关村高新技术企业" border  class="dialogBody_radio2">中关村高新技术企业</el-radio>
-        <el-radio v-model="bizType" label="无" border  class="dialogBody_radio2">无</el-radio>
-      </div>
-      <span slot="footer" v-if="visibleDialog1">
-        <el-button type="primary" @click="change(1)">确定</el-button>
-      </span>
-
-      <!--弹窗2-->
-      <span slot="title" v-if="visibleDialog2">
-        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
-        <h3 class="dialogHeader_h">所属领域</h3>
-      </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog2">
-        <el-radio v-model="bizDomain" label="新一代信息技术" border class="dialogBody_radio1">新一代信息技术</el-radio>
-        <el-radio v-model="bizDomain" label="集成电路" border class="dialogBody_radio2">集成电路</el-radio>
-        <el-radio v-model="bizDomain" label="医药健康" border class="dialogBody_radio2">医药健康</el-radio>
-        <el-radio v-model="bizDomain" label="智能装备产业" border class="dialogBody_radio2">智能装备产业</el-radio>
-        <el-radio v-model="bizDomain" label="节能环保" border class="dialogBody_radio2">节能环保</el-radio>
-        <el-radio v-model="bizDomain" label="新能源智能汽车" border class="dialogBody_radio2">新能源智能汽车</el-radio>
-        <el-radio v-model="bizDomain" label="新材料" border class="dialogBody_radio2">新材料</el-radio>
-        <el-radio v-model="bizDomain" label="人工智能" border class="dialogBody_radio2">人工智能</el-radio>
-        <el-radio v-model="bizDomain" label="软件和信息服务" border class="dialogBody_radio2">软件和信息服务</el-radio>
-        <el-radio v-model="bizDomain" label="科技服务业" border class="dialogBody_radio2">科技服务业</el-radio>
-      </div>
-      <span slot="footer" v-if="visibleDialog2">
-        <el-button type="primary" @click="change(2)">确定</el-button>
-      </span>
-
-      <!--弹窗3-->
-      <span slot="title" v-if="visibleDialog3">
-        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
-        <h3 class="dialogHeader_h">成立年限</h3>
-      </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog3">
-        <el-radio v-model="bizYear" label="1年以内" border class="dialogBody_radio1">1年以内</el-radio>
-        <el-radio v-model="bizYear" label="1-3年" border class="dialogBody_radio2">1-3年</el-radio>
-        <el-radio v-model="bizYear" label="4-6年" border class="dialogBody_radio2">4-6年</el-radio>
-        <el-radio v-model="bizYear" label="7年以上" border class="dialogBody_radio2">7年以上</el-radio>
-      </div>
-      <span slot="footer" v-if="visibleDialog3">
-        <el-button type="primary" @click="change(3)">确定</el-button>
-      </span>
-
-      <!--弹窗4-->
-      <span slot="title" v-if="visibleDialog4">
-        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
-        <h3 class="dialogHeader_h">注册地址</h3>
-      </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog4">
-        <el-radio v-model="bizArea" label="海淀区" border class="dialogBody_radio1">海淀区</el-radio>
-        <el-radio v-model="bizArea" label="中关村示范区" border class="dialogBody_radio2">中关村示范区</el-radio>
-      </div>
-      <span slot="footer" v-if="visibleDialog4">
-        <el-button type="primary" @click="change(4)">确定</el-button>
-      </span>
-
-      <!--弹窗5-->
-      <span slot="title" v-if="visibleDialog5">
-        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
-        <h3 class="dialogHeader_h">创业人群</h3>
-      </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog5">
-        <el-radio v-model="bizPeople" label="留学人员" border class="dialogBody_radio1">留学人员</el-radio>
-        <el-radio v-model="bizPeople" label="非留学人员" border class="dialogBody_radio2">非留学人员</el-radio>
-      </div>
-      <span slot="footer" v-if="visibleDialog5">
-        <el-button type="primary" @click="change(5)">确定</el-button>
-      </span>
-
-      <!--弹窗6-->
-      <span slot="title" v-if="visibleDialog6">
-        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
-        <h3 class="dialogHeader_h">研发投入占比<br><p style="font-size: 1.2rem;color: #ccc;">(占全年总投入金额的比例)</p></h3>
-      </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog6">
-        <el-radio v-model="bizSupport" label="10%-20%" border class="dialogBody_radio1">10%-20%</el-radio>
-        <el-radio v-model="bizSupport" label="30%-40%" border class="dialogBody_radio2">30%-40%</el-radio>
-        <el-radio v-model="bizSupport" label="50%以上" border class="dialogBody_radio2">50%以上</el-radio>
-      </div>
-      <span slot="footer" v-if="visibleDialog6">
-        <el-button type="primary" @click="change(6)">确定</el-button>
-      </span>
-
-      <!--弹窗7-->
-      <span slot="title" v-if="visibleDialog7">
-        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
-        <h3 class="dialogHeader_h">企业营收<br><p style="font-size: 1.2rem;color: #ccc;">(上一年的企业营收总额)</p></h3>
-      </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog7">
-        <el-radio v-model="bizIncome" label="0-50万" border class="dialogBody_radio1">0-50万</el-radio>
-        <el-radio v-model="bizIncome" label="50-100万" border class="dialogBody_radio2">50-100万</el-radio>
-        <el-radio v-model="bizIncome" label="100-500万" border class="dialogBody_radio2">100-500万</el-radio>
-        <el-radio v-model="bizIncome" label="500-1000万" border class="dialogBody_radio2">500-1000万</el-radio>
-        <el-radio v-model="bizIncome" label="1000-5000万" border class="dialogBody_radio2">1000-5000万</el-radio>
-        <el-radio v-model="bizIncome" label="5000万-1亿" border class="dialogBody_radio2">5000万-1亿</el-radio>
-      </div>
-      <span slot="footer" v-if="visibleDialog7">
-        <el-button type="primary" @click="change(7)">确定</el-button>
-      </span>
-
-      <!--弹窗8-->
-      <span slot="title" v-if="visibleDialog8">
-        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
-        <h3 class="dialogHeader_h">融资额度</h3>
-      </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog8">
-        <el-radio v-model="bizLimit" label="0-50万" border class="dialogBody_radio1">0-50万</el-radio>
-        <el-radio v-model="bizLimit" label="50-100万" border class="dialogBody_radio2">50-100万</el-radio>
-        <el-radio v-model="bizLimit" label="100-500万" border class="dialogBody_radio2">100-500万</el-radio>
-        <el-radio v-model="bizLimit" label="500-1000万" border class="dialogBody_radio2">500-1000万</el-radio>
-        <el-radio v-model="bizLimit" label="1000-5000万" border class="dialogBody_radio2">1000-5000万</el-radio>
-        <el-radio v-model="bizLimit" label="5000万-1亿" border class="dialogBody_radio2">5000万-1亿</el-radio>
-      </div>
-      <span slot="footer" v-if="visibleDialog8">
-        <el-button type="primary" @click="change(8)">确定</el-button>
-      </span>
-
-      <!--弹窗9-->
-      <span slot="title" v-if="visibleDialog9">
-        <img src="@/assets/images/dialog_titlebg.png" class="dialogHeader_image"/>
-        <h3 class="dialogHeader_h">自主知识产权</h3>
-      </span>
-      <div style="margin-top: 5rem;text-align: center;" v-if="visibleDialog9">
-        <el-radio v-model="bizKnowledge" label="有" border class="dialogBody_radio1">有</el-radio>
-        <el-radio v-model="bizKnowledge" label="无" border class="dialogBody_radio2">无</el-radio>
-      </div>
-      <span slot="footer" v-if="visibleDialog9">
-        <el-button type="primary" @click="change(8)">确定</el-button>
-      </span>
-    </el-dialog>
+    
+    <div class="swiper" v-if="swiperVisible">
+      <h3 style="text-align: center;">
+        <span style="float: left;font-weight: normal;margin-left: 20px;" @click="swiperVisible=false">取消</span>选择
+        <!--<span style="float: right;font-weight: normal;margin-right: 20px;">确定</span>-->
+      </h3>
+      <swiper :options="swiperOption" ref="mySwiper" style="padding: 20px 0;height: 20rem;">
+        <swiper-slide v-for="(value, index) in swiperContent" :key="index">
+          <div class="swiper-content" @click="change(value)">{{value.content}}</div>
+        </swiper-slide>
+      </swiper>
+    </div>
   </div>
 </template>
 
@@ -207,18 +88,18 @@
 export default {
   data () {
     return {
-      visibleDialog: false,
-      visibleDialog1: false,
-      visibleDialog2: false,
-      visibleDialog3: false,
-      visibleDialog4: false,
-      visibleDialog5: false,
-      visibleDialog6: false,
-      visibleDialog7: false,
-      visibleDialog8: false,
-      visibleDialog9: false,
+      swiperOption: {
+        direction: 'vertical',
+        slidesPerView: 4,
+        spaceBetween: 10,
+        centeredSlides: true
+      },
+      swiperVisible: false,
+      swiperContent: [],
       userData: null,
       showInfo: false,
+      bizName: '',
+      phone: '',
       bizType: '',
       bizDomain: '',
       bizYear: '',
@@ -239,7 +120,7 @@ export default {
         url: this.URL + 'policyUserInfo',
         method: 'post',
         data: this.$http.adornData({
-          'openid': '1234567'
+          'openid': this.$cookie.get('openid')
         })
       }).then(({data}) => {
         if (data && data.code === 0) {
@@ -254,10 +135,12 @@ export default {
         url: this.URL + 'wechatUserEditInfo',
         method: 'post',
         data: this.$http.adornData({
-          'openid': '1234567'
+          'openid': this.$cookie.get('openid')
         })
       }).then(({data}) => {
         if (data && data.code === 0) {
+          this.bizName = data.wechatUser.bizName
+          this.phone = data.wechatUser.phone
           this.bizType = data.wechatUser.bizType
           this.bizDomain = data.wechatUser.bizDomain
           this.bizYear = data.wechatUser.bizYear
@@ -271,148 +154,241 @@ export default {
         }
       })
     },
-    showDialog1 () {
-      this.visibleDialog = true
-      this.visibleDialog1 = true
-      this.visibleDialog2 = false
-      this.visibleDialog3 = false
-      this.visibleDialog4 = false
-      this.visibleDialog5 = false
-      this.visibleDialog6 = false
-      this.visibleDialog7 = false
-      this.visibleDialog8 = false
-      this.visibleDialog9 = false
-    },
-    showDialog2 () {
-      this.visibleDialog = true
-      this.visibleDialog1 = false
-      this.visibleDialog2 = true
-      this.visibleDialog3 = false
-      this.visibleDialog4 = false
-      this.visibleDialog5 = false
-      this.visibleDialog6 = false
-      this.visibleDialog7 = false
-      this.visibleDialog8 = false
-      this.visibleDialog9 = false
-    },
-    showDialog3 () {
-      this.visibleDialog = true
-      this.visibleDialog1 = false
-      this.visibleDialog2 = false
-      this.visibleDialog3 = true
-      this.visibleDialog4 = false
-      this.visibleDialog5 = false
-      this.visibleDialog6 = false
-      this.visibleDialog7 = false
-      this.visibleDialog8 = false
-      this.visibleDialog9 = false
-    },
-    showDialog4 () {
-      this.visibleDialog = true
-      this.visibleDialog1 = false
-      this.visibleDialog2 = false
-      this.visibleDialog3 = false
-      this.visibleDialog4 = true
-      this.visibleDialog5 = false
-      this.visibleDialog6 = false
-      this.visibleDialog7 = false
-      this.visibleDialog8 = false
-      this.visibleDialog9 = false
-    },
-    showDialog5 () {
-      this.visibleDialog = true
-      this.visibleDialog = true
-      this.visibleDialog1 = false
-      this.visibleDialog2 = false
-      this.visibleDialog3 = false
-      this.visibleDialog4 = false
-      this.visibleDialog5 = true
-      this.visibleDialog6 = false
-      this.visibleDialog7 = false
-      this.visibleDialog8 = false
-      this.visibleDialog9 = false
-    },
-    showDialog6 () {
-      this.visibleDialog = true
-      this.visibleDialog1 = false
-      this.visibleDialog2 = false
-      this.visibleDialog3 = false
-      this.visibleDialog4 = false
-      this.visibleDialog5 = false
-      this.visibleDialog6 = true
-      this.visibleDialog7 = false
-      this.visibleDialog8 = false
-      this.visibleDialog9 = false
-    },
-    showDialog7 () {
-      this.visibleDialog = true
-      this.visibleDialog1 = false
-      this.visibleDialog2 = false
-      this.visibleDialog3 = false
-      this.visibleDialog4 = false
-      this.visibleDialog5 = false
-      this.visibleDialog6 = false
-      this.visibleDialog7 = true
-      this.visibleDialog8 = false
-      this.visibleDialog9 = false
-    },
-    showDialog8 () {
-      this.visibleDialog = true
-      this.visibleDialog1 = false
-      this.visibleDialog2 = false
-      this.visibleDialog3 = false
-      this.visibleDialog4 = false
-      this.visibleDialog5 = false
-      this.visibleDialog6 = false
-      this.visibleDialog7 = false
-      this.visibleDialog8 = true
-      this.visibleDialog9 = false
-    },
-    showDialog9 () {
-      this.visibleDialog = true
-      this.visibleDialog1 = false
-      this.visibleDialog2 = false
-      this.visibleDialog3 = false
-      this.visibleDialog4 = false
-      this.visibleDialog5 = false
-      this.visibleDialog6 = false
-      this.visibleDialog7 = false
-      this.visibleDialog8 = false
-      this.visibleDialog9 = true
-    },
-    change (num) {
-      this.visibleDialog = false
-      let bdata
-      switch (num) {
+    showSwiper (num) {
+      this.swiperVisible = true
+      switch (parseFloat(num)) {
         case 1:
-          bdata = {'openid': '1234567', 'updateType': 'base', 'bizType': this.bizType}
+          this.swiperContent = [
+            {
+              content: '国家高新技术企业',
+              id: '1'
+            },
+            {
+              content: '中关村高新技术企业',
+              id: '1'
+            },
+            {
+              content: '无',
+              id: '1'
+            }
+          ]
           break
         case 2:
-          bdata = {'openid': '1234567', 'updateType': 'base', 'bizDomain': this.bizDomain}
+          this.swiperContent = [
+            {
+              content: '新一代信息技术',
+              id: '2'
+            },
+            {
+              content: '集成电路',
+              id: '2'
+            },
+            {
+              content: '医药健康',
+              id: '2'
+            },
+            {
+              content: '智能装备产业',
+              id: '2'
+            },
+            {
+              content: '节能环保',
+              id: '2'
+            },
+            {
+              content: '新能源智能汽车',
+              id: '2'
+            },
+            {
+              content: '新材料',
+              id: '2'
+            },
+            {
+              content: '人工智能',
+              id: '2'
+            },
+            {
+              content: '软件和信息服务',
+              id: '2'
+            },
+            {
+              content: '科技服务业',
+              id: '2'
+            }
+          ]
           break
         case 3:
-          bdata = {'openid': '1234567', 'updateType': 'base', 'bizYear': this.bizYear}
+          this.swiperContent = [
+            {
+              content: '1年以内',
+              id: '3'
+            },
+            {
+              content: '1-3年',
+              id: '3'
+            },
+            {
+              content: '4-6年',
+              id: '3'
+            },
+            {
+              content: '7年以上',
+              id: '3'
+            }
+          ]
           break
         case 4:
-          bdata = {'openid': '1234567', 'updateType': 'base', 'bizArea': this.bizArea}
+          this.swiperContent = [
+            {
+              content: '海淀区',
+              id: '4'
+            },
+            {
+              content: '中关村示范区',
+              id: '4'
+            }
+          ]
           break
         case 5:
-          bdata = {'openid': '1234567', 'updateType': 'base', 'bizPeople': this.bizPeople}
+          this.swiperContent = [
+            {
+              content: '留学人员',
+              id: '5'
+            },
+            {
+              content: '非留学人员',
+              id: '5'
+            }
+          ]
           break
         case 6:
-          bdata = {'openid': '1234567', 'updateType': 'base', 'bizSupport': this.bizSupport}
+          this.swiperContent = [
+            {
+              content: '10%-20%',
+              id: '6'
+            },
+            {
+              content: '30%-40%',
+              id: '6'
+            },
+            {
+              content: '50%以上',
+              id: '6'
+            }
+          ]
           break
         case 7:
-          bdata = {'openid': '1234567', 'updateType': 'base', 'bizIncome': this.bizIncome}
+          this.swiperContent = [
+            {
+              content: '0-50万',
+              id: '7'
+            },
+            {
+              content: '50-100万',
+              id: '7'
+            },
+            {
+              content: '100-500万',
+              id: '7'
+            },
+            {
+              content: '500-1000万',
+              id: '7'
+            },
+            {
+              content: '1000-5000万',
+              id: '7'
+            },
+            {
+              content: '5000万-1亿',
+              id: '7'
+            }
+          ]
           break
         case 8:
-          bdata = {'openid': '1234567', 'updateType': 'base', 'bizLimit': this.bizLimit}
+          this.swiperContent = [
+            {
+              content: '0-50万',
+              id: '8'
+            },
+            {
+              content: '50-100万',
+              id: '8'
+            },
+            {
+              content: '100-500万',
+              id: '8'
+            },
+            {
+              content: '500-1000万',
+              id: '8'
+            },
+            {
+              content: '1000-5000万',
+              id: '8'
+            },
+            {
+              content: '5000万-1亿',
+              id: '8'
+            }
+          ]
           break
         case 9:
-          bdata = {'openid': '1234567', 'updateType': 'base', 'bizKnowledge': this.bizKnowledge}
+          this.swiperContent = [
+            {
+              content: '有',
+              id: '9'
+            },
+            {
+              content: '无',
+              id: '9'
+            }
+          ]
           break
       }
-
+    },
+    change (value) {
+      console.log(this.$refs.mySwiper.swiper.slides[0].innerText)
+      this.swiperVisible = false
+      let bdata = {}
+      switch (parseFloat(value.id)) {
+        case 1:
+          bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'bizType': value.content}
+          this.bizType = value.content
+          break
+        case 2:
+          bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'bizDomain': value.content}
+          this.bizDomain = value.content
+          break
+        case 3:
+          bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'bizYear': value.content}
+          this.bizYear = value.content
+          break
+        case 4:
+          bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'bizArea': value.content}
+          this.bizArea = value.content
+          break
+        case 5:
+          bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'bizPeople': value.content}
+          this.bizPeople = value.content
+          break
+        case 6:
+          bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'bizSupport': value.content}
+          this.bizSupport = value.content
+          break
+        case 7:
+          bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'bizIncome': value.content}
+          this.bizIncome = value.content
+          break
+        case 8:
+          bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'bizLimit': value.content}
+          this.bizLimit = value.content
+          break
+        case 9:
+          bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'bizKnowledge': value.content}
+          this.bizKnowledge = value.content
+          break
+      }
       this.$http({
         url: this.URL + 'policyTest',
         method: 'post',
@@ -425,6 +401,45 @@ export default {
         } else {
         }
       })
+    },
+    changebizName () {
+      let bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'bizName': this.bizName}
+      this.$http({
+        url: this.URL + 'policyTest',
+        method: 'post',
+        data: bdata
+      }).then(({data}) => {
+        if (data && data.code === 0) {
+          if (data.result === 'success') {
+          } else {
+          }
+        } else {
+        }
+      })
+    },
+    changePhone () {
+      let bdata = {'openid': this.$cookie.get('openid'), 'updateType': 'base', 'phone': this.phone}
+      this.$http({
+        url: this.URL + 'policyTest',
+        method: 'post',
+        data: bdata
+      }).then(({data}) => {
+        if (data && data.code === 0) {
+          if (data.result === 'success') {
+          } else {
+          }
+        } else {
+        }
+      })
+    },
+    policyInfo (id) {
+      let data = {
+        'openid': this.$cookie.get('openid'),
+        'policySign': id,
+        'reqType': 'list'
+      }
+      sessionStorage.setItem('policyInfo', JSON.stringify(data))
+      this.$router.push({ name: 'policyInfo' })
     }
   }
 }
@@ -459,5 +474,41 @@ export default {
   bottom: 1.5rem;
   left: 1.5rem;
   color: #ccc;
+}
+.line{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: .5rem;
+}
+.orange{
+  color: #ff3c11;
+  font-size: 1.6rem;
+}
+.bold{
+  font-weight: bold;
+}
+.font-color{
+  color: #999;
+}
+.swiper-content{
+  width: 100%;
+  text-align: center;
+  height: 4rem;
+
+  line-height: 4rem;
+}
+.swiper-slide-active{
+  background: rgba(217,217,217,.3);
+}
+.swiper{
+  position: absolute;
+  height: 30rem;
+  width:100%;
+  bottom: 60px;
+  background: #fff;
+  overflow: hidden;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
 }
 </style>
