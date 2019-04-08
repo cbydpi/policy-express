@@ -27,7 +27,7 @@ export default {
       chatContent: [
         {
           role: 'robot',
-          content: '您好，我是小法政策机器人，有什么问题快来咨询我吧'
+          content: '您好，我是小海政策机器人，有什么问题快来咨询我吧'
         }
       ],
       chatInput: '',
@@ -89,7 +89,7 @@ export default {
             this.chatInput = ''
             this.chatContent.push({
               role: 'robot',
-              content: '小法暂时无法回答该问题'
+              content: '小海暂时无法回答该问题'
             })
           }
         } else {
