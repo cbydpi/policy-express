@@ -12,7 +12,7 @@
         </div>
       </el-main>
       <el-footer style="padding: 0;">
-        <el-input placeholder="请输入内容" v-model="chatInput">
+        <el-input placeholder="请输入内容" v-model="chatInput" @keyup.enter.native="chat">
           <el-button type="primary" slot="append" @click.native="chat">发送</el-button>
         </el-input>
       </el-footer>

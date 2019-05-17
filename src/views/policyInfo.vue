@@ -11,7 +11,7 @@
         <div class="money" v-for="(value,index) in policyData.contentList" v-if="value.paramSign === '政策支持'">
           {{value.content}}
         </div>
-        <div class="listStyle" v-for="(value,index) in policyData.contentList" v-bind:key="index" v-if="value.paramSign !== '政策支持'">
+        <div class="listStyle" v-for="(value,index) in policyData.contentList" v-bind:key="index" v-if="value.paramSign !== '政策支持' && value.paramSign !== policyData.name">
           <div></div>
           <h4>{{value.paramSign}}</h4>
           <p>{{value.content}}</p>
