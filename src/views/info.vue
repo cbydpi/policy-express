@@ -12,7 +12,7 @@
       <el-main style="height: 100%!important;padding: 0px;">
         <el-tabs :stretch="true">
           <el-tab-pane label="我的记录">
-            <el-card v-if="userData.logs && userData" v-for="value in userData.logs" :key="value.policySign"  @click.native="policyInfo(value.policySign)">
+            <el-card v-if="userData && userData.logs" v-for="value in userData.logs" :key="value.policySign"  @click.native="policyInfo(value.policySign)">
               <el-row>
                 <el-col :span="8">
                   <div class="orange line bold">{{value.money}}</div>
@@ -29,39 +29,39 @@
       </el-main>
     </el-container>
     <div v-if="showInfo" style="padding: 0 5px;">
-      <el-form label-width="80px">
-        <el-form-item label="企业名称">
-          <el-input v-model="bizName" @blur="changebizName()"></el-input>
+      <el-form label-width="100px" label-position="left">
+        <el-form-item label="企业名称" style="border-bottom: solid 1px #ccc;">
+          <el-input v-model="bizName" @blur="changebizName()" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
-        <el-form-item label="联系方式">
-          <el-input v-model="phone" @blur="changePhone()"></el-input>
+        <el-form-item label="联系方式" style="border-bottom: solid 1px #ccc;">
+          <el-input v-model="phone" @blur="changePhone()" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
-        <el-form-item label="企业资质">
-          <el-input disabled @click.native="showSwiper(1)" v-model="bizType"></el-input>
+        <el-form-item label="企业资质" style="border-bottom: solid 1px #ccc;">
+          <el-input disabled @click.native="showSwiper(1)" v-model="bizType" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
-        <el-form-item label="所属领域">
-          <el-input disabled @click.native="showSwiper(2)" v-model="bizDomain"></el-input>
+        <el-form-item label="所属领域" style="border-bottom: solid 1px #ccc;">
+          <el-input disabled @click.native="showSwiper(2)" v-model="bizDomain" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
-        <el-form-item label="成立年限">
-          <el-input disabled @click.native="showSwiper(3)" v-model="bizYear"></el-input>
+        <el-form-item label="成立年限" style="border-bottom: solid 1px #ccc;">
+          <el-input disabled @click.native="showSwiper(3)" v-model="bizYear" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
-        <el-form-item label="注册地址">
-          <el-input disabled @click.native="showSwiper(4)" v-model="bizArea"></el-input>
+        <el-form-item label="注册地址" style="border-bottom: solid 1px #ccc;">
+          <el-input disabled @click.native="showSwiper(4)" v-model="bizArea" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
-        <el-form-item label="创业人群">
-          <el-input disabled @click.native="showSwiper(5)" v-model="bizPeople"></el-input>
+        <el-form-item label="创业人群" style="border-bottom: solid 1px #ccc;">
+          <el-input disabled @click.native="showSwiper(5)" v-model="bizPeople" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
-        <el-form-item label="研发投入占比">
-          <el-input disabled @click.native="showSwiper(6)" v-model="bizSupport"></el-input>
+        <el-form-item label="研发投入占比" style="border-bottom: solid 1px #ccc;">
+          <el-input disabled @click.native="showSwiper(6)" v-model="bizSupport" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
-        <el-form-item label="企业营收">
-          <el-input disabled @click.native="showSwiper(7)" v-model="bizIncome"></el-input>
+        <el-form-item label="企业营收" style="border-bottom: solid 1px #ccc;">
+          <el-input disabled @click.native="showSwiper(7)" v-model="bizIncome" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
-        <el-form-item label="融资额度">
-          <el-input disabled @click.native="showSwiper(8)" v-model="bizLimit"></el-input>
+        <el-form-item label="融资额度" style="border-bottom: solid 1px #ccc;">
+          <el-input disabled @click.native="showSwiper(8)" v-model="bizLimit" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
-        <el-form-item label="自主知识产权">
-          <el-input disabled @click.native="showSwiper(9)" v-model="bizKnowledge"></el-input>
+        <el-form-item label="自主知识产权" style="border-bottom: solid 1px #ccc;">
+          <el-input disabled @click.native="showSwiper(9)" v-model="bizKnowledge" class="inputStyle" suffix-icon="el-icon-arrow-right"></el-input>
         </el-form-item>
         <el-form-item size="large">
           <el-button type="primary" @click="showInfo=false">确定</el-button>
@@ -71,8 +71,8 @@
     </div>
     
     <div class="swiper" v-if="swiperVisible">
-      <h3 style="text-align: center;">
-        <span style="float: left;font-weight: normal;margin-left: 20px;" @click="swiperVisible=false">取消</span>选择
+      <h3 style="text-align: center;padding: 10px;background: rgba(217,217,217,.3);">
+        <span style="font-weight: normal;left: 20px;position: absolute;" @click="swiperVisible=false">取消</span>选择
         <!--<span style="float: right;font-weight: normal;margin-right: 20px;">确定</span>-->
       </h3>
       <swiper :options="swiperOption" ref="mySwiper" style="padding: 20px 0;height: 20rem;">
@@ -445,7 +445,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped="scoped">
+<style lang="scss">
 .dialogHeader_image{
   width: 100%;
   position: absolute;
@@ -510,5 +510,11 @@ export default {
   overflow: hidden;
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
+}
+.inputStyle input{
+  border: none!important;
+  background: none!important;
+  color: #333333!important;
+  text-align: right!important;
 }
 </style>
