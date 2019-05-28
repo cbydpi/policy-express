@@ -50,13 +50,14 @@ router.beforeEach((to, from, next) => {
   if (browser.versions.mobile) { // 判断是否是移动设备打开。browser代码在下面
     var ua = navigator.userAgent.toLowerCase() // 获取判断用的对象
     if (ua.indexOf('micromessenger') === -1 && to.path !== '/error') {
-      // 在微信中打开
-      console.log(11)
+      // 不是在微信中打开
       next('/error')
     } else {
+      // 微信中打开
       if (str.indexOf('code=') === -1) {
+        // 如果没有openid
 //      next()
-        console.log(111)
+
         window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fwx.ofaai.com%2Fpolicy%2F%23%2Fhome&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect'
       } else {
         next()
