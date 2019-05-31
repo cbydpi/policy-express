@@ -15,7 +15,7 @@ import 'swiper/dist/css/swiper.css'
 
 Vue.use(VueAweSomeSwiper)
 
-const URL = 'http://wx.ofaai.com:8383/nature/wx/'
+const URL = 'http://wx.ofaai.com:8484/nature/wx/'
 const wsURL = 'ws://39.105.41.93:8282/renren-fast/'
 Vue.prototype.URL = URL
 Vue.prototype.wsURL = wsURL

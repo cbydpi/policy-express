@@ -58,7 +58,7 @@ router.beforeEach((to, from, next) => {
         // 如果没有openid
 //      next()
 
-        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fwx.ofaai.com%2Fpolicy%2F%23%2Fhome&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect'
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fwx.ofaai.com%2Fjinan%2F%23%2Fhome&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect'
       } else {
         next()
       }
