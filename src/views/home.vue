@@ -97,8 +97,8 @@
         <h3 class="dialogHeader_h">注册地址</h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog4">
-        <el-radio v-model="homeTest.dialog4" label="济南市" border class="dialogBody_radio1">济南市</el-radio>
-        <el-radio v-model="homeTest.dialog4" label="天桥区" border class="dialogBody_radio2">天桥区</el-radio>
+        <el-radio v-model="homeTest.dialog4" label="海淀区" border class="dialogBody_radio1">海淀区</el-radio>
+        <el-radio v-model="homeTest.dialog4" label="中关村示范园" border class="dialogBody_radio2">中关村示范园</el-radio>
       </div>
       <span slot="footer" v-if="visibleDialog4">
         <span class="dialogFooter_mark">4/9</span>

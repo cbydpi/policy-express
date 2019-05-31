@@ -19,7 +19,8 @@ const router = new Router({
         { path: '/policy', component: _import('policy'), name: 'policy', desc: '列表', meta: {auth: true} },
         { path: '/qa', component: _import('qa'), name: 'qa', desc: '咨询', meta: {auth: true} },
         { path: '/policyInfo', component: _import('policyInfo'), name: 'policyInfo', desc: '政策详情', meta: {auth: true} },
-        { path: '/info', component: _import('info'), name: 'info', desc: '我的', meta: {auth: true} }
+        { path: '/info', component: _import('info'), name: 'info', desc: '我的', meta: {auth: true} },
+        { path: '/declare', component: _import('declare'), name: 'declare', desc: '政策申报', meta: {auth: true} }
       ]
     }
   ]
@@ -58,7 +59,7 @@ router.beforeEach((to, from, next) => {
         // 如果没有openid
 //      next()
 
-        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fwx.ofaai.com%2Fjinan%2F%23%2Fhome&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect'
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fwx.ofaai.com%2Fpolicy%2F%23%2Fhome&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect'
       } else {
         next()
       }

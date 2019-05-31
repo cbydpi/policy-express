@@ -17,8 +17,9 @@
           <p>{{value.content}}</p>
         </div>
       </el-main>
-      <el-footer style="height: 40px;padding: 0;">
-        <el-button type="primary" style="width: 100%;margin: 0;" @click.native="routeChat">专家申报入口</el-button>
+      <el-footer style="height: 90px;padding: 0;">
+        <el-button type="warning" style="width: 100%;margin: 0;margin-bottom: 10px;" @click.native="routeChat">咨询专家</el-button>
+        <el-button type="primary" style="width: 100%;margin: 0;" @click.native="declare">立即申报</el-button>
       </el-footer>
     </el-container>
   </div>
@@ -50,6 +51,9 @@ export default {
     },
     routeChat () {
       this.$router.push({ name: 'qa' })
+    },
+    declare () {
+      this.$router.push({ name: 'declare' })
     }
   }
 }

@@ -14,5 +14,7 @@ export function routeName (path) {
       return '我的'
     case 'policyInfo':
       return '政策详情'
+    case 'declare':
+      return '政策申报'
   }
 }
