@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%;height: 100%;">
     <el-container style='height: 100%;width: 100%;'>
-      <el-header style="height: 30px;">
+      <el-header style="height: auto;">
         <h3 style="text-align: center;margin: 0;" v-if="policyData">{{policyData.name}}</h3>
       </el-header>
       <el-main style="height: 100%!important;padding: 5px;" v-if="policyData">
@@ -9,7 +9,9 @@
           {{value.paramSign}}：{{value.content}}
         </div>
         <div class="money" v-for="(value,index) in policyData.contentList" v-if="value.paramSign === '政策支持'">
-          {{value.content}}
+          <div style="display: table-cell;vertical-align: middle;">
+            {{value.content}}
+          </div>
         </div>
         <div class="listStyle" v-for="(value,index) in policyData.contentList" v-bind:key="index" v-if="value.paramSign !== '政策支持' && value.paramSign !== policyData.name">
           <div></div>
@@ -64,6 +66,7 @@ export default {
   padding: .5rem;
 }
 .money{
+  display: table;
   width: 80%;
   margin: 0 auto;
   min-height: 6rem;
@@ -71,7 +74,7 @@ export default {
   color: #fff;
   font-size: 2rem;
   padding: 1rem;
-  text-align: left;
+  text-align: center;
   background-image: url('~@/assets/images/moneybg.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;

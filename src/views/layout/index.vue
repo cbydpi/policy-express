@@ -1,13 +1,10 @@
 <template>
   <div class="main">
     <el-container style='height: 100%;width: 100%;'>
-      <el-header>
-        <nav-bar></nav-bar>
-      </el-header>
       <el-main style="height: 100%!important;">
         <router-view></router-view>
       </el-main>
-      <el-footer>
+      <el-footer v-if="qq">
         <slide-bar></slide-bar>
       </el-footer>
     </el-container>
@@ -29,10 +26,20 @@ export default {
     }
   },
   mounted () {
-
+    this.getPath()
+  },
+  watch: {
+  // 监听路由参数发生变化，重新加载页面
+    '$route': 'getPath'
   },
   methods: {
-
+    getPath () {
+      if (this.$route.name !== 'qa' && this.$route.name !== 'policy' && this.$route.name !== 'info') {
+        this.qq = false
+      } else {
+        this.qq = true
+      }
+    }
   }
 }
 </script>

@@ -97,7 +97,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped="scoped">
+<style lang="scss">
 p{
   margin: 0;
 }
@@ -116,5 +116,8 @@ p{
 }
 .font-color{
   color: #999;
+}
+.el-tabs__item{
+  padding: 0 5px!important;
 }
 </style>

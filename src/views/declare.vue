@@ -4,22 +4,22 @@
       <el-form-item prop="bizName">
         <el-input
           placeholder="请输入企业名称"
-          prefix-icon="el-icon-s-home"
           v-model="formData.bizName">
+          <i slot="prefix" class="el-input__icon el-icon-school" style="color: #0178ff;font-weight: bold;"></i>
         </el-input>
       </el-form-item>
       <el-form-item prop="contacter">
         <el-input
           placeholder="请输入联系人姓名"
-          prefix-icon="el-icon-user-solid"
           v-model="formData.contacter">
+          <i slot="prefix" class="el-input__icon el-icon-user-solid" style="color: #0178ff;font-weight: bold;"></i>
         </el-input>
       </el-form-item>
       <el-form-item prop="phone">
         <el-input
           placeholder="请输入联系方式"
-          prefix-icon="el-icon-phone"
           v-model="formData.phone">
+          <i slot="prefix" class="el-input__icon el-icon-mobile-phone" style="color: #0178ff;font-weight: bold;"></i>
         </el-input>
       </el-form-item>
       <el-form-item>
