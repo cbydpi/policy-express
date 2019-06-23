@@ -70,9 +70,6 @@
         } else {
         }
       })
-      this.$cookie.set('openid', 'oeyAz5i8-K7N1E0NvDY40KffcFZk')
-      console.log(document.cookie.split(";")[0].split("=")[1])
-      console.log(JSON.parse(sessionStorage.getItem('policyInfo')).policySign)
     },
     methods: {
       submit () {
@@ -85,7 +82,7 @@
                 'token': this.token
               },
               data: JSON.stringify({
-                'policySign': JSON.parse(sessionStorage.getItem('policyInfo')).policySign,
+                'policyId': JSON.parse(sessionStorage.getItem('policyInfo')).policyId,
                 'openid': this.$cookie.get('openid'),
                 'bizName': this.formData.bizName,
                 'contacter': this.formData.contacter,

@@ -5,17 +5,17 @@
         <h3 style="text-align: center;margin: 0;" v-if="policyData">{{policyData.name}}</h3>
       </el-header>
       <el-main style="height: 100%!important;padding: 5px;" v-if="policyData">
-        <div class="info" v-for="(value,index) in policyData.contentList" v-if="value.paramSign === '受理单位' || value.paramSign === '联系方式'">
-          {{value.paramSign}}：{{value.content}}
+        <div class="info" v-for="(value,index) in policyData.contentList" v-if="value.name === '受理单位' || value.name === '联系方式'">
+          {{value.name}}：{{value.content}}
         </div>
-        <div class="money" v-for="(value,index) in policyData.contentList" v-if="value.paramSign === '政策支持'">
+        <div class="money" v-for="(value,index) in policyData.contentList" v-if="value.name === '政策支持'">
           <div style="display: table-cell;vertical-align: middle;">
             {{value.content}}
           </div>
         </div>
-        <div class="listStyle" v-for="(value,index) in policyData.contentList" v-bind:key="index" v-if="value.paramSign !== '政策支持' && value.paramSign !== policyData.name">
+        <div class="listStyle" v-for="(value,index) in policyData.contentList" v-bind:key="index" v-if="value.name !== '政策支持' && value.name !== policyData.name">
           <div></div>
-          <h4>{{value.paramSign}}</h4>
+          <h4>{{value.name}}</h4>
           <p>{{value.content}}</p>
         </div>
       </el-main>
