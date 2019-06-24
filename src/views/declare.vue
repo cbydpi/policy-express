@@ -26,6 +26,18 @@
         <el-button type="primary" style="width: 100%;" @click.native="submit">提交</el-button>
       </el-form-item>
     </el-form>
+    
+    <el-dialog
+      title="微信授权"
+      :visible.sync="showDialog"
+      width="60%"
+      center>
+      <p style="text-align: center;">开通后系统将自动给您摄像头最新的政策和与您相匹配的政策</p>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="$router.go(-1)">拒 绝</el-button>
+        <el-button type="primary" @click="link">免费开通</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -40,6 +52,7 @@
         }
       }
       return{
+        showDialog: false,
         formData: {
           bizName: '',
           contacter: '',
@@ -70,11 +83,11 @@
         } else {
         }
       })
-      this.$cookie.set('openid', 'oeyAz5i8-K7N1E0NvDY40KffcFZk')
-      console.log(document.cookie.split(";")[0].split("=")[1])
-      console.log(JSON.parse(sessionStorage.getItem('policyInfo')).policySign)
     },
     methods: {
+      link () {
+        window.location.href = 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg2MjExMDMzMQ==&scene=126&bizpsid=0#wechat_redirect'
+      },
       submit () {
         this.$refs['form'].validate((valid) => {
           if (valid) {
@@ -97,6 +110,7 @@
                   type: 'success',
                   message: '提交成功！'
                 })
+                this.showDialog = true
                 this.formData.bizName = ''
                 this.formData.contacter = ''
                 this.formData.phone = ''
