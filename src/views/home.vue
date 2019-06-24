@@ -13,12 +13,12 @@
       <el-row>
         <el-col :offset="4" :span="6" style="text-align: center;">
           <img src="@/assets/images/money.png" style="width: 70%;"/>
-          <h3 style="color: #ff8811;margin: 0;margin-top: 2%;">500万元</h3>
+          <h3 style="color: #ff8811;margin: 0;margin-top: 2%;">{{maxMoney}}</h3>
           <p style="margin: 2% 0;">最高申报金额</p>
         </el-col>
         <el-col :offset="4" :span="6" style="text-align: center;">
           <img src="@/assets/images/user.png" style="width: 70%;"/>
-          <h3 style="color: #ff8811;margin: 0;margin-top: 2%;">116家</h3>
+          <h3 style="color: #ff8811;margin: 0;margin-top: 2%;">{{userCount}}家</h3>
           <p style="margin: 2% 0;">企业用户总数</p>
         </el-col>
       </el-row>
@@ -196,7 +196,8 @@
         <h3 class="dialogHeader_h">企业资质</h3>
       </span>
       <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog10">
-        <img style="width: 100%;" src="@/assets/images/testr.png"/>
+        <h3>贵公司19年预计可申请政策金额总计</h3>
+        <h1 style="color: #FF3C11;">{{money}}万元</h1>
       </div>
       <span slot="footer" v-if="visibleDialog10">
         <el-button type="primary" @click="finishTest">我知道了</el-button>
@@ -209,6 +210,9 @@
 export default {
   data () {
     return {
+      money: 0,
+      maxMoney: '',
+      userCount: '',
       visibleDialog: false,
       visibleDialog1: false,
       visibleDialog2: false,
@@ -234,20 +238,32 @@ export default {
     }
   },
   mounted () {
-//  console.log(this.$route.query.code)
-    if (window.location.href.indexOf('code=') !== -1) {
-      let str = window.location.href
-      this.$http({
-        url: this.URL + 'getOpenid?code=' + str.slice(str.indexOf('code=')+5, str.indexOf('&state')),
-        method: 'get'
-      }).then(({data}) => {
-        if (data && data.code === 0) {
-          this.$cookie.set('code', this.$route.query.code)
-          this.$cookie.set('openid', data.openid)
-        } else {
-        }
+//  if (window.location.href.indexOf('code=') !== -1) {
+//    let str = window.location.href
+//    this.$http({
+//      url: this.URL + 'getOpenid?code=' + str.slice(str.indexOf('code=')+5, str.indexOf('&state')),
+//      method: 'get'
+//    }).then(({data}) => {
+//      if (data && data.code === 0) {
+//        this.$cookie.set('code', this.$route.query.code)
+//        this.$cookie.set('openid', data.openid)
+//      } else {
+//      }
+//    })
+//  }
+    this.$http({
+      url: this.URL + 'index',
+      method: 'post',
+      data: JSON.stringify({
+        'openid': this.$cookie.get('openid')
       })
-    }
+    }).then(({data}) => {
+      if (data && data.code === 0) {
+        this.maxMoney = data.maxMoney
+        this.userCount= data.userCount
+      } else {
+      }
+    })
     this.showFooter = true
     this.homeTest = {
       dialog1: null,
@@ -425,7 +441,7 @@ export default {
         function (res) {
           console.log(res)
           if (res.data.code === 0) {
-
+            this.money = res.data.allMoney
           } else {
             this.$message.error(res.data.msg)
           }

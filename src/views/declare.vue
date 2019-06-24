@@ -98,7 +98,7 @@
                 'token': this.token
               },
               data: JSON.stringify({
-                'policySign': JSON.parse(sessionStorage.getItem('policyInfo')).policySign,
+                'policyId': JSON.parse(sessionStorage.getItem('policyInfo')).policyId,
                 'openid': this.$cookie.get('openid'),
                 'bizName': this.formData.bizName,
                 'contacter': this.formData.contacter,

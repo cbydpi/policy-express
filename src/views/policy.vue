@@ -61,7 +61,7 @@
       policyInfo(id) {
         let data = {
           'openid': this.$cookie.get('openid'),
-          'policySign': id,
+          'policyId': id,
           'reqType': 'list'
         }
         sessionStorage.setItem('policyInfo', JSON.stringify(data))
