@@ -17,15 +17,15 @@
       </el-row>
     </div>
     <div style="margin-top: 40px;">
-      <el-card v-if="listData" v-for="(value, index) in listData" @click.native="policyInfo(value.policySign)" :key="index">
+      <el-card v-if="listData" v-for="(value, index) in listData" @click.native="policyInfo(value.policyId, value.policyName)" :key="index">
         <el-row>
           <el-col :span="8">
             <div class="orange line bold">{{value.money}}</div>
-            <div class="line">匹配度：{{value.matchScore}}%</div>
+            <div class="line">匹配度：{{value.matchScore*100}}%</div>
           </el-col>
           <el-col :span="16">
-            <div class="line font-color">政策标题：{{value.policySign}}</div>
-            <div class="line font-color">截止时间：{{value.declareDate}}</div>
+            <div class="line font-color">政策标题：{{value.policyName}}</div>
+            <div class="line font-color">截止时间：{{value.endDate}}</div>
           </el-col>
         </el-row>
       </el-card>
@@ -35,17 +35,17 @@
 
 <script>
   export default {
-    data() {
+    data () {
       return {
         listData: null,
         type: 'default'
       }
     },
-    mounted() {
+    mounted () {
       this.getListData('default')
     },
     methods: {
-      getListData(type) {
+      getListData (type) {
         this.type = type
         this.$http({
           url: this.URL + 'policyList?openid=' + this.$cookie.get('openid') + '&' + type,
@@ -58,11 +58,12 @@
           } else {}
         })
       },
-      policyInfo(id) {
+      policyInfo (id, name) {
         let data = {
           'openid': this.$cookie.get('openid'),
           'policyId': id,
-          'reqType': 'list'
+          'reqType': 'list',
+          'policyName': name
         }
         sessionStorage.setItem('policyInfo', JSON.stringify(data))
         this.$router.push({

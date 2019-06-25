@@ -58,7 +58,7 @@ router.beforeEach((to, from, next) => {
     } else {
       // 微信中打开
       if (str.indexOf('code=') === -1) {
-        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fwx.ofaai.com%2Fpolicy%2F%23%2F'+to.path.substr(1)+'&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect'
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fresource.ofaai.com%2Ftest%2F%23%2F'+to.path.substr(1)+'&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect'
       } else {
         if (router.app.$cookie.get('openid') !== null) {
           next()

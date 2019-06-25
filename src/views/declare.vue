@@ -32,7 +32,7 @@
       :visible.sync="showDialog"
       width="60%"
       center>
-      <p style="text-align: center;">开通后系统将自动给您摄像头最新的政策和与您相匹配的政策</p>
+      <p style="text-align: center;">开通后系统将自动给您推送最新的政策和与您相匹配的政策</p>
       <span slot="footer" class="dialog-footer">
         <el-button @click="$router.go(-1)">拒 绝</el-button>
         <el-button type="primary" @click="link">免费开通</el-button>
@@ -45,7 +45,7 @@
   export default {
     data () {
       var validateMobile = (rule, value, callback) => {
-        if (!(/^1[0-9]{10}$/.test(value))) {
+        if (!(/^((0\d{2,3}-\d{7,8})|(1[3567894]\d{9}))$/.test(value))) {
           callback(new Error('手机号格式错误'))
         } else {
           callback()
@@ -102,7 +102,8 @@
                 'openid': this.$cookie.get('openid'),
                 'bizName': this.formData.bizName,
                 'contacter': this.formData.contacter,
-                'phone': this.formData.phone
+                'phone': this.formData.phone,
+                'policyName': JSON.parse(sessionStorage.getItem('policyInfo')).policyName
               })
             }).then(({data}) => {
               if (data && data.code === 0) {
