@@ -103,7 +103,7 @@
                 'bizName': this.formData.bizName,
                 'contacter': this.formData.contacter,
                 'phone': this.formData.phone,
-                'policyName': JSON.parse(sessionStorage.getItem('policyInfo')).policyName
+                'policyName': sessionStorage.getItem('policyName')
               })
             }).then(({data}) => {
               if (data && data.code === 0) {

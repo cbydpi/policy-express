@@ -21,7 +21,8 @@ const router = new Router({
         { path: '/policyInfo', component: _import('policyInfo'), name: 'policyInfo', desc: '政策详情', meta: {auth: true} },
         { path: '/info', component: _import('info'), name: 'info', desc: '我的', meta: {auth: true} },
         { path: '/declare', component: _import('declare'), name: 'declare', desc: '政策申报', meta: {auth: true} },
-        { path: '/userInfo', component: _import('userInfo'), name: 'userInfo', desc: '用户信息', meta: {auth: true} }
+        { path: '/userInfo', component: _import('userInfo'), name: 'userInfo', desc: '用户信息', meta: {auth: true} },
+        { path: '/agent', component: _import('agent'), name: 'agent', desc: '中间页', meta: {auth: true} }
       ]
     }
   ]
@@ -57,8 +58,23 @@ router.beforeEach((to, from, next) => {
       next('/error')
     } else {
       // 微信中打开
+
       if (str.indexOf('code=') === -1) {
-        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fresource.ofaai.com%2Ftest%2F%23%2F'+to.path.substr(1)+'&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect'
+
+        let state = str.slice(str.indexOf('id=')+3, str.indexOf('&jump'))
+//      var arrObj = str.split('?')
+//      if (arrObj.length > 1) {
+//        var arrPara = arrObj[1].split('&')
+//        var arr;
+//        for (let i = 0; i < arrPara.length; i++) {
+//          arr = arrPara[i].split('=')
+//          if (arr !== null && arr[0] ==='id') {
+//            state = arr[1]
+//          }
+//        }
+//      }
+
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fresource.ofaai.com%2Ftest%2F%23%2F'+to.path.substr(1)+'&response_type=code&scope=snsapi_userinfo&state='+state+'#wechat_redirect'
       } else {
         if (router.app.$cookie.get('openid') !== null) {
           next()

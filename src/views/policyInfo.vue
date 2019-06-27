@@ -2,7 +2,7 @@
   <div style="width: 100%;height: 100%;">
     <el-container style='height: 100%;width: 100%;'>
       <el-header style="height: auto;">
-        <h3 style="text-align: center;margin: 0;" v-if="policyData">{{policyData.name}}</h3>
+        <h3 style="text-align: center;margin: 0;" v-if="policyData">{{policyData.smallName}}</h3>
       </el-header>
       <el-main style="height: 100%!important;padding: 5px;" v-if="policyData">
         <div class="info" v-for="(value,index) in policyData.contentList" v-if="value.name === '受理单位' || value.name === '联系方式'">
@@ -55,6 +55,7 @@ export default {
       this.$router.push({ name: 'qa' })
     },
     declare () {
+      sessionStorage.setItem('policyName', this.policyData.name)
       this.$router.push({ name: 'declare' })
     }
   }

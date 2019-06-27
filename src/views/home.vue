@@ -197,7 +197,7 @@
       </span>
       <div style="margin-top: 5rem;text-align: center;height: 18rem;overflow: auto;;" v-if="visibleDialog10">
         <h3>贵公司19年预计可申请政策金额总计</h3>
-        <h1 style="color: #FF3C11;">{{money}}万元</h1>
+        <h1 style="color: #FF3C11;">{{money}}</h1>
       </div>
       <span slot="footer" v-if="visibleDialog10">
         <el-button type="primary" @click="finishTest">我知道了</el-button>
@@ -210,7 +210,7 @@
 export default {
   data () {
     return {
-      money: 0,
+      money: '',
       maxMoney: '',
       userCount: '',
       visibleDialog: false,
@@ -420,6 +420,7 @@ export default {
       this.visibleDialog10 = false
     },
     showDialog10 () {
+      var self = this
       if (!this.homeTest.dialog9) {
         this.$message.error('请选择')
         return
@@ -440,10 +441,10 @@ export default {
       this.$http.post(this.URL + 'policyTest', JSON.stringify(data)).then(
         function (res) {
           console.log(res)
+          self.money = res.data.allMoney
           if (res.data.code === 0) {
-            this.money = res.data.allMoney
           } else {
-            this.$message.error(res.data.msg)
+            self.$message.error(res.data.msg)
           }
         }, function (res) {
         // 处理失败的结果

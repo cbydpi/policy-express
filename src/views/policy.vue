@@ -21,7 +21,7 @@
         <el-row>
           <el-col :span="8">
             <div class="orange line bold">{{value.money}}</div>
-            <div class="line">匹配度：{{value.matchScore*100}}%</div>
+            <div class="line">匹配度：{{Math.round(value.matchScore*100)}}%</div>
           </el-col>
           <el-col :span="16">
             <div class="line font-color">政策标题：{{value.policyName}}</div>
@@ -62,8 +62,7 @@
         let data = {
           'openid': this.$cookie.get('openid'),
           'policyId': id,
-          'reqType': 'list',
-          'policyName': name
+          'reqType': 'list'
         }
         sessionStorage.setItem('policyInfo', JSON.stringify(data))
         this.$router.push({
