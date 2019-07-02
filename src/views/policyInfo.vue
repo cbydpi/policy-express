@@ -16,12 +16,28 @@
         <div class="listStyle" v-for="(value,index) in policyData.contentList" v-bind:key="index" v-if="value.name !== '政策支持' && value.name !== policyData.name">
           <div></div>
           <h4>{{value.name}}</h4>
-          <p>{{value.content}}</p>
+          <p v-if="value.name !== '通知链接'">{{value.content}}</p>
+          <p v-if="value.name === '通知链接'"><a :href="value.content">{{value.content}}</a></p>
         </div>
       </el-main>
-      <el-footer style="height: 90px;padding: 0;">
-        <el-button type="warning" style="width: 100%;margin: 0;margin-bottom: 10px;" @click.native="routeChat">咨询专家</el-button>
-        <el-button type="primary" style="width: 100%;margin: 0;" @click.native="declare">立即申报</el-button>
+      <el-footer style="height: 60px;padding: 10px 0;">
+        <el-row>
+          <el-col :span="5" @click.native="routeChat('policy')" style="text-align: center;">
+            <i style="font-size: 2rem;" class="cbiconfont cbicon-policy"></i>
+            <p style="margin: 0;font-size: 1.4rem;">政策</p>
+          </el-col>
+          <el-col :span="5" style="text-align: center;" @click.native="link">
+            <i style="font-size: 2rem;" class="cbiconfont cbicon-link"></i>
+            <p style="margin: 0;font-size: 1.4rem;">原文</p>
+          </el-col>
+          <el-col :span="5" @click.native="routeChat('qa')" style="text-align: center;">
+            <i style="font-size: 2rem;" class="cbiconfont cbicon-qa"></i>
+            <p style="margin: 0;font-size: 1.4rem;">咨询专家</p>
+          </el-col>
+          <el-col :span="9">
+            <el-button type="primary" style="width: 100%;margin: 0;" @click.native="declare">立即申报</el-button>
+          </el-col>
+        </el-row>
       </el-footer>
     </el-container>
   </div>
@@ -32,7 +48,8 @@ export default {
   data () {
     return {
       policyInfo: null,
-      policyData: null
+      policyData: null,
+      policyLink: '#'
     }
   },
   mounted () {
@@ -47,12 +64,20 @@ export default {
       }).then(({data}) => {
         if (data && data.code === 0) {
           this.policyData = data.policy
+          for (let i = 0; i < this.policyData.contentList.length; i++) {
+            if (this.policyData.contentList[i].name === '通知链接') {
+              this.policyLink = this.policyData.contentList[i].content
+            }
+          }
         } else {
         }
       })
     },
-    routeChat () {
-      this.$router.push({ name: 'qa' })
+    link () {
+      window.location.href = this.policyLink
+    },
+    routeChat (r) {
+      this.$router.push({ name: r })
     },
     declare () {
       sessionStorage.setItem('policyName', this.policyData.name)

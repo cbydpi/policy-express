@@ -30,9 +30,12 @@
     <el-dialog
       title="微信授权"
       :visible.sync="showDialog"
-      width="60%"
+      width="80%"
       center>
-      <p style="text-align: center;">开通后系统将自动给您推送最新的政策和与您相匹配的政策</p>
+      <div style="text-align: center;">
+        <img src="@/assets/images/logo.png" style="width: 30%;"/>
+        <p style="text-align: center;padding: 10px;">开通后系统将自动给您推送最新的政策和与您相匹配的政策</p>
+      </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="$router.go(-1)">拒 绝</el-button>
         <el-button type="primary" @click="link">免费开通</el-button>
