@@ -184,6 +184,7 @@ export default {
         })
       }
       this.labelValue = ''
+      this.labelValueArr = []
     },
     pre () {
       this.thisIndex--
