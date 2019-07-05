@@ -60,7 +60,9 @@ router.beforeEach((to, from, next) => {
       // 微信中打开
 
       if (str.indexOf('code=') === -1) {
-
+//      router.app.$cookie.set('openid', 'oeyAz5i8-K7N1E0NvDY40KffcFZk')
+//      next()
+        
         let state = str.slice(str.indexOf('id=')+3, str.indexOf('&jump'))
 //      var arrObj = str.split('?')
 //      if (arrObj.length > 1) {
@@ -74,7 +76,7 @@ router.beforeEach((to, from, next) => {
 //        }
 //      }
 
-        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Fwx.ofaai.com%2Fpolicy%2F%23%2F'+to.path.substr(1)+'&response_type=code&scope=snsapi_userinfo&state='+state+'#wechat_redirect'
+        window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx57c02bfc15411a90&redirect_uri=http%3A%2F%2Ftest.ofaai.com%2Ftest%2F%23%2F'+to.path.substr(1)+'&response_type=code&scope=snsapi_userinfo&state='+state+'#wechat_redirect'
       } else {
         if (router.app.$cookie.get('openid') !== null) {
           next()

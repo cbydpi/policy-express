@@ -7,6 +7,9 @@
             <div :class="value.role === 'robot' ? 'leftIcon' : 'rightIcon'"></div>
             <div :class="value.role === 'robot' ? 'left' : 'right'">
               {{value.content}}
+              <div style="display: inline-block;position: absolute;right: 0;bottom: -28px;" v-if="value.policyId !== 0">
+                <el-button type="primary" size="mini" style="padding: 5px;font-size: 12px;" @click.native="policyInfo(value.policyId)">详情</el-button>
+              </div>
             </div>
           </div>
         </div>
@@ -24,20 +27,31 @@
 export default {
   data () {
     return {
-      chatContent: [
-        {
-          role: 'robot',
-          content: '您好，我是小海政策机器人，有什么问题快来咨询我吧'
-        }
-      ],
+      chatContent: [],
       chatInput: '',
       dateTime: ''
     }
   },
   mounted () {
+    this.init()
     this.callSign()
   },
   methods: {
+    init () {
+      this.$http({
+        url: this.URL + 'start-word',
+        method: 'get'
+      }).then(({data}) => {
+        if (data && data.code === 0) {
+          this.chatContent.push({
+            role: 'robot',
+            content: data.startWord,
+            policyId: 0
+          })
+        } else {
+        }
+      })
+    },
     callSign () {
       let date = new Date()
       let month = date.getMonth() + 1
@@ -62,6 +76,17 @@ export default {
       }
       this.dateTime = date.getFullYear().toString() + month + day + hour + minute + second
     },
+    policyInfo (id) {
+      let data = {
+        'openid': this.$cookie.get('openid'),
+        'policyId': id,
+        'reqType': 'list'
+      }
+      sessionStorage.setItem('policyInfo', JSON.stringify(data))
+      this.$router.push({
+        name: 'policyInfo'
+      })
+    },
     chat () {
       this.chatContent.push({
         role: 'user',
@@ -83,13 +108,15 @@ export default {
             this.chatInput = ''
             this.chatContent.push({
               role: 'robot',
-              content: data.answer
+              content: data.answer,
+              policyId: data.policyId
             })
           } else {
             this.chatInput = ''
             this.chatContent.push({
               role: 'robot',
-              content: '小海暂时无法回答该问题'
+              content: data.answer,
+              policyId: 0
             })
           }
         } else {
@@ -147,6 +174,7 @@ export default {
 }
 
 .left {
+  position: relative;
   display: inline-block;
   float: left;
   margin-left: .5rem;

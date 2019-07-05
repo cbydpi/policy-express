@@ -16,11 +16,11 @@
               <el-row>
                 <el-col :span="8">
                   <div class="orange line bold">{{value.money}}</div>
-                  <div class="line">匹配度：{{value.matchScore}}%</div>
+                  <div class="line">匹配度：{{Math.round(value.matchScore*100)}}%</div>
                 </el-col>
                 <el-col :span="16">
-                  <div class="line font-color">政策标题：{{value.policySign}}</div>
-                  <div class="line font-color">申报时间：{{value.declareDate}}</div>
+                  <div class="line font-color">政策标题：{{value.policyName}}</div>
+                  <div class="line font-color">申报时间：{{value.endDate}}</div>
                 </el-col>
               </el-row>
             </el-card>
