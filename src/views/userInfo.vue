@@ -12,13 +12,13 @@
               <el-input v-model="name" class="inputStyle" suffix-icon="el-icon-arrow-right" disabled></el-input>
             </el-form-item>
             <el-form-item label="企业名称" style="border-bottom: solid 1px #ccc;">
-              <el-input v-model="bizName" class="inputStyle" suffix-icon="el-icon-arrow-right" @click.native="showDialog2('bizName')"></el-input>
+              <el-input v-model="bizName" class="inputStyle" suffix-icon="el-icon-arrow-right" @click.native="showDialog2('bizName')" disabled></el-input>
             </el-form-item>
             <el-form-item label="联系方式" style="border-bottom: solid 1px #ccc;">
-              <el-input v-model="phone" class="inputStyle" suffix-icon="el-icon-arrow-right" @click.native="showDialog2('phone')"></el-input>
+              <el-input v-model="phone" class="inputStyle" suffix-icon="el-icon-arrow-right" @click.native="showDialog2('phone')" disabled></el-input>
             </el-form-item>
             <el-form-item :label="value.tagName" style="border-bottom: solid 1px #ccc;" v-for="(value,index) in tagList" :key="index">
-              <el-input v-model="value.tagValues.toString()" class="inputStyle" suffix-icon="el-icon-arrow-right" @click.native="showDialog(value)"></el-input>
+              <el-input v-model="value.tagValues.toString()" class="inputStyle" suffix-icon="el-icon-arrow-right" @click.native="showDialog(value)" disabled></el-input>
             </el-form-item>
           </el-form>
         </el-main>

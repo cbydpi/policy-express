@@ -3,11 +3,11 @@
     <el-container style='height: 100%;width: 100%;'>
       <el-main style="height: 100%!important;">
         <div id="chatBox" style="height: 100%;">
-          <div v-for="(value,key) in chatContent" class="clearfix" :key="key">
+          <div v-for="(value,key) in chatContent" class="clearfix" :key="key" style="padding-bottom: 20px;">
             <div :class="value.role === 'robot' ? 'leftIcon' : 'rightIcon'"></div>
             <div :class="value.role === 'robot' ? 'left' : 'right'">
               {{value.content}}
-              <div style="display: inline-block;position: absolute;right: 0;bottom: -28px;" v-if="value.policyId !== 0">
+              <div style="display: inline-block;position: absolute;right: 0;bottom: -28px;" v-if="value.policyId !== 0 && value.role === 'robot'">
                 <el-button type="primary" size="mini" style="padding: 5px;font-size: 12px;" @click.native="policyInfo(value.policyId)">详情</el-button>
               </div>
             </div>

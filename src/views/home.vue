@@ -238,4 +238,20 @@ export default {
 .el-radio{
   margin-right: 0!important;
 }
+.el-checkbox__inner{
+  border-radius: 100%!important;
+}
+.el-checkbox__inner::after{
+  width: 4px!important;
+  height: 4px!important;
+  border-radius: 100%;
+  background: #FFFFFF!important;
+  position: absolute;
+  left: 50%!important;
+  top: 50%!important;
+  transform: translate(-50%, -50%) scale(1)!important;
+  transition: transform .15s ease-in;
+  border: none!important;
+  content: "";
+}
 </style>
